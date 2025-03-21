@@ -1,0 +1,63 @@
+<view class="container">
+  <!-- 用户信息卡片 -->
+  <view class="profile-card">
+    <view class="user-section">
+      <image 
+        class="avatar" 
+        src="{{userInfo.avatarUrl}}" 
+        mode="aspectFill"
+        binderror="handleError"
+        data-type="user"
+      />
+      <view class="user-info">
+        <text class="nickname">{{userInfo.nickName}}</text>
+        <text class="edit-btn" bindtap="editProfile">编辑资料</text>
+      </view>
+    </view>
+
+    <view class="stats-row">
+      <view class="stat-item">
+        <text class="number">{{stats.photos}}</text>
+        <text class="label">照片</text>
+      </view>
+      <view class="stat-item">
+        <text class="number">{{stats.moments}}</text>
+        <text class="label">动态</text>
+      </view>
+      <view class="stat-item">
+        <text class="number">{{stats.days}}</text>
+        <text class="label">天数</text>
+      </view>
+    </view>
+
+    <view class="partner-section" wx:if="{{hasPartner}}">
+      <image 
+        class="partner-avatar" 
+        src="{{partnerInfo.avatarUrl}}" 
+        mode="aspectFill"
+        binderror="handleError"
+        data-type="partner"
+      />
+      <text class="partner-name">{{partnerInfo.nickName}}</text>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-grid">
+    <view 
+      class="menu-item" 
+      wx:for="{{menuList}}" 
+      wx:key="text"
+      bindtap="handleMenuClick"
+      data-path="{{item.path}}"
+    >
+      <image class="menu-icon" src="{{item.icon}}" mode="aspectFit" />
+      <text class="menu-text">{{item.text}}</text>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-btn" bindtap="logout">
+    退出登录
+  </view>
+</view> 

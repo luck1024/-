@@ -1,0 +1,51 @@
+<view class="container">
+  <view class="invite-card">
+    <view class="card-title">邀请伴侣</view>
+    <view class="card-subtitle">分享邀请码给你的另一半</view>
+    
+    <view class="code-section">
+      <view class="code-label">你的邀请码</view>
+      <view class="code-display">
+        <text class="code">{{inviteCode}}</text>
+        <view class="copy-btn" bindtap="copyInviteCode">复制</view>
+      </view>
+      <view class="code-tip">邀请码24小时内有效</view>
+    </view>
+    
+    <view class="share-section">
+      <button class="share-btn" open-type="share">
+        <image class="share-icon" src="/images/icons/share.png" mode="aspectFit"></image>
+        <text>分享给微信好友</text>
+      </button>
+    </view>
+  </view>
+  
+  <view class="divider">
+    <view class="line"></view>
+    <text>或者</text>
+    <view class="line"></view>
+  </view>
+  
+  <view class="accept-section">
+    <view class="accept-title">收到邀请码？</view>
+    <button class="accept-btn" bindtap="goToAcceptInvite">
+      <text>输入邀请码</text>
+      <view class="arrow"></view>
+    </button>
+  </view>
+  
+  <view class="tips">
+    <view class="tip-item">
+      <view class="tip-icon">💝</view>
+      <view class="tip-text">每个用户只能绑定一位伴侣</view>
+    </view>
+    <view class="tip-item">
+      <view class="tip-icon">🔒</view>
+      <view class="tip-text">绑定后需双方确认才能解除</view>
+    </view>
+    <view class="tip-item">
+      <view class="tip-icon">💌</view>
+      <view class="tip-text">绑定后可以一起记录美好时光</view>
+    </view>
+  </view>
+</view> 

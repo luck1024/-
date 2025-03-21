@@ -1,0 +1,87 @@
+<view class="container">
+  <!-- 发布框 -->
+  <view class="post-box" bindtap="createPost">
+    <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"/>
+    <view class="input-placeholder">分享新的动态...</view>
+    <view class="post-btn">发布</view>
+  </view>
+
+  <!-- 动态列表 -->
+  <view class="moments-list" wx:if="{{!isEmpty}}">
+    <view class="moment-item" wx:for="{{moments}}" wx:key="_id">
+      <!-- 用户信息 -->
+      <view class="user-info">
+        <image class="avatar" src="{{item.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"/>
+        <view class="user-detail">
+          <view class="nickname">{{item.nickName || '用户'}}</view>
+          <text class="time">{{item.formattedTime || formatTime(item.createTime)}}</text>
+        </view>
+      </view>
+
+      <!-- 动态内容 -->
+      <view class="content">{{item.content}}</view>
+
+      <!-- 图片区域 -->
+      <view class="image-list {{item.images.length === 1 ? 'single-image' : ''}}" wx:if="{{item.images.length > 0}}">
+        <image 
+          wx:for="{{item.images}}" 
+          wx:for-item="img"
+          wx:key="*this"
+          src="{{img}}"
+          mode="aspectFill"
+          bindtap="previewImage"
+          data-url="{{img}}"
+          data-images="{{item.images}}"
+          class="{{item.images.length === 1 ? 'single-img' : ''}}"
+        />
+      </view>
+
+      <!-- 位置信息 -->
+      <view class="location" wx:if="{{item.location}}">
+        <image src="/images/location.png" mode="aspectFit"/>
+        <text>{{item.location}}</text>
+      </view>
+
+      <!-- 互动区域 -->
+      <view class="interaction">
+        <view class="action-btn" bindtap="handleLike" data-id="{{item._id}}">
+          <image src="{{item.isLiked ? '/images/love.png' : '/images/ai.png'}}"/>
+          <text>{{item.likes || 0}}</text>
+        </view>
+        <view class="action-btn" bindtap="handleComment" data-id="{{item._id}}">
+          <image src="/images/fankui.png"/>
+          <text>{{(item.comments && item.comments.length) || 0}}</text>
+        </view>
+        <view class="action-btn delete" bindtap="deleteMoment" data-id="{{item._id}}" wx:if="{{item._openid === app.globalData.openid}}">
+          <image src="/images/delete.png"/>
+          <text>删除</text>
+        </view>
+      </view>
+
+      <!-- 评论列表 -->
+      <view class="comments" wx:if="{{item.comments && item.comments.length > 0}}">
+        <view class="comment-item" wx:for="{{item.comments}}" wx:for-item="comment" wx:key="id">
+          <text class="comment-user">{{comment.nickname || '用户'}}:</text>
+          <text class="comment-content">{{comment.content}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{isEmpty && !isLoading}}">
+    <image src="/images/empty.png" mode="aspectFit"/>
+    <text>还没有动态，快去发布第一条吧！</text>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-state" wx:if="{{isLoading}}">
+    <view class="loading-spinner"></view>
+    <text>加载中...</text>
+  </view>
+
+  <!-- 悬浮发布按钮 -->
+  <view class="float-btn" bindtap="createPost">
+    <image src="/images/edit.png"/>
+  </view>
+</view> 

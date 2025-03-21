@@ -1,0 +1,23 @@
+<view class="container">
+  <!-- 情书列表 -->
+  <view class="letter-list">
+    <view class="letter-item" 
+          wx:for="{{letters}}" 
+          wx:key="id"
+          bindtap="viewLetter"
+          data-id="{{item.id}}">
+      <view class="letter-content">
+        <text class="letter-text">{{item.content}}</text>
+        <view class="letter-info">
+          <text class="letter-date">{{item.date}}</text>
+          <text class="letter-mood">{{item.mood}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 写情书按钮 -->
+  <view class="write-btn" bindtap="showWriteModal">
+    <text class="plus">写情书</text>
+  </view>
+</view> 

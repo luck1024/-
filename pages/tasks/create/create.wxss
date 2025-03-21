@@ -1,0 +1,286 @@
+.container {
+  min-height: 100vh;
+  background: #f8f8f8;
+  padding: 20rpx;
+  padding-bottom: 120rpx;
+}
+
+/* 类型选择器 */
+.type-selector {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.type-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  border-radius: 12rpx;
+}
+
+.type-item.active {
+  background: #fff5f5;
+}
+
+.type-item.active text {
+  color: #ff9a9e;
+}
+
+.type-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.type-item text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 表单部分 */
+.form-section {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.form-item {
+  margin-bottom: 24rpx;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 12rpx;
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  height: 80rpx;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.textarea {
+  width: 100%;
+  height: 200rpx;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+/* 选择器样式 */
+.picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+}
+
+.picker text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.arrow-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+/* 奖励选择器 */
+.reward-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.reward-item {
+  padding: 16rpx 30rpx;
+  background: #f8f8f8;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.reward-item.active {
+  background: #ff9a9e;
+  color: #fff;
+}
+
+.reward-item.custom {
+  border: 2rpx dashed #999;
+  background: transparent;
+}
+
+.reward-item.custom.active {
+  border-color: #ff9a9e;
+  color: #ff9a9e;
+  background: #fff5f5;
+}
+
+/* 提醒开关 */
+.reminder-switch {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.reminder-switch text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 标签列表 */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.tag-item {
+  padding: 12rpx 24rpx;
+  background: #f8f8f8;
+  border-radius: 24rpx;
+  font-size: 26rpx;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.tag-item.active {
+  background: #ff9a9e;
+  color: #fff;
+}
+
+/* 提交按钮 */
+.submit-btn {
+  width: 100%;
+  height: 88rpx;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  border-radius: 44rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+
+.button-hover {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+/* 自定义奖励弹窗 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 30rpx 30rpx 0 0;
+  overflow: hidden;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  padding: 30rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.modal-body {
+  padding: 30rpx;
+}
+
+.reward-input {
+  width: 100%;
+  height: 80rpx;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+}
+
+.modal-footer {
+  display: flex;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.cancel-btn, .confirm-btn {
+  flex: 1;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  background: #fff;
+}
+
+.cancel-btn {
+  color: #666;
+}
+
+.confirm-btn {
+  color: #ff9a9e;
+  font-weight: 500;
+}
+
+/* 表单中等图标 */
+.form-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+} 

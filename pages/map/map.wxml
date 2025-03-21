@@ -1,0 +1,10 @@
+<view class="mapHeight">
+  <map 
+    id="map" 
+    class="map"
+    polyline="{{polyline}}"
+    markers="{{markers}}" 
+    include-points="{{markers}}"
+   ></map>
+   <img bindtap="intres" class="img" src="./../../image/shuaxin.png"/>
+</view>

@@ -1,0 +1,271 @@
+/* pages/tasks/detail/detail.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  padding: 30rpx;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300rpx;
+}
+
+.loading-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid #f3f3f3;
+  border-top: 6rpx solid #ff6b81;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.task-card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.status {
+  font-size: 24rpx;
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+.status.pending {
+  background-color: #fff5f6;
+  color: #ff6b81;
+}
+
+.status.completed {
+  background-color: #f0f9eb;
+  color: #67c23a;
+}
+
+.task-content {
+  margin-bottom: 30rpx;
+}
+
+.info-item {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #666;
+  width: 160rpx;
+  flex-shrink: 0;
+}
+
+.value {
+  font-size: 28rpx;
+  color: #333;
+  flex: 1;
+}
+
+.priority {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 16rpx;
+  font-size: 24rpx;
+}
+
+.priority.low {
+  background-color: #f0f9eb;
+  color: #67c23a;
+}
+
+.priority.normal {
+  background-color: #f4f4f5;
+  color: #909399;
+}
+
+.priority.high {
+  background-color: #fef0f0;
+  color: #f56c6c;
+}
+
+.task-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40rpx;
+}
+
+.action-btn {
+  width: 160rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 35rpx;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+}
+
+.edit {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.complete {
+  background-color: #ff6b81;
+  color: #fff;
+}
+
+.delete {
+  background-color: #fef0f0;
+  color: #f56c6c;
+}
+
+.form {
+  margin-bottom: 30rpx;
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.input {
+  width: 100%;
+  height: 80rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 10rpx;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 160rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  margin-top: 10rpx;
+}
+
+.picker {
+  width: 100%;
+  height: 80rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 80rpx;
+  margin-top: 10rpx;
+}
+
+.placeholder {
+  color: #999;
+}
+
+.option-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+
+.option {
+  flex: 1;
+  height: 80rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10rpx;
+}
+
+.option:first-child {
+  margin-left: 0;
+}
+
+.option:last-child {
+  margin-right: 0;
+}
+
+.option.active {
+  background-color: #ff6b81;
+}
+
+.option-text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.option.active .option-text {
+  color: #fff;
+}
+
+.edit-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancel {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.save {
+  background-color: #ff6b81;
+  color: #fff;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.error-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.error-text {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+}
+
+.retry-btn {
+  font-size: 28rpx;
+  color: #fff;
+  background-color: #ff6b81;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+} 

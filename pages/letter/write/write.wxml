@@ -1,0 +1,46 @@
+<view class="container">
+  <!-- 顶部日期显示 -->
+  <view class="date-display">
+    <text class="date">{{currentDate}}</text>
+    <text class="weather" wx:if="{{weather}}">{{weather}}</text>
+  </view>
+
+  <!-- 写信区域 -->
+  <view class="write-form">
+    <view class="paper">
+      <textarea class="letter-input" 
+                placeholder="亲爱的，今天想对你说..." 
+                placeholder-style="color: #999;"
+                maxlength="1000"
+                bindinput="onInput"
+                value="{{content}}"
+                auto-height/>
+      <view class="word-count">{{content.length}}/1000</view>
+    </view>
+
+    <!-- 心情选择器 -->
+    <view class="mood-section">
+      <text class="section-title">此刻心情</text>
+      <view class="mood-list">
+        <view class="mood-item {{selectedMood === index ? 'active' : ''}}"
+              wx:for="{{moods}}"
+              wx:key="*this"
+              bindtap="selectMood"
+              data-index="{{index}}">
+          <text class="mood-emoji">{{moodEmojis[index]}}</text>
+          <text class="mood-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部按钮组 -->
+  <view class="btn-group">
+    <button class="cancel-btn" bindtap="cancelWrite">取消</button>
+    <button class="save-btn {{!canSave ? 'disabled' : ''}}" 
+            bindtap="saveLetter" 
+            disabled="{{!canSave}}">
+      保存
+    </button>
+  </view>
+</view> 

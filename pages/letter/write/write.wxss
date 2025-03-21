@@ -1,0 +1,136 @@
+.container {
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.date-display {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.date {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.weather {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.write-form {
+  flex: 1;
+  padding: 30rpx;
+}
+
+.paper {
+  background: #fafafa;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  min-height: 400rpx;
+  position: relative;
+  margin-bottom: 40rpx;
+}
+
+.letter-input {
+  width: 100%;
+  font-size: 30rpx;
+  line-height: 1.8;
+  color: #333;
+}
+
+.word-count {
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.section-title {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+
+.mood-section {
+  margin-top: 40rpx;
+}
+
+.mood-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.mood-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  background: #f8f8f8;
+  border-radius: 16rpx;
+  transition: all 0.3s;
+}
+
+.mood-emoji {
+  font-size: 40rpx;
+  margin-bottom: 8rpx;
+}
+
+.mood-text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.mood-item.active {
+  background: #fff5f5;
+  transform: scale(1.05);
+}
+
+.mood-item.active .mood-text {
+  color: #ff6b81;
+  font-weight: 500;
+}
+
+.btn-group {
+  padding: 30rpx;
+  display: flex;
+  gap: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.cancel-btn, .save-btn {
+  flex: 1;
+  height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-btn {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.save-btn {
+  background: linear-gradient(45deg, #ff6b81, #ff4757);
+  color: #fff;
+}
+
+.save-btn.disabled {
+  opacity: 0.5;
+  background: #ccc;
+}
+
+.save-btn:active {
+  transform: scale(0.98);
+} 

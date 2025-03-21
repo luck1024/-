@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="header">
+    <text class="title">我们的小天地</text>
+    <text class="subtitle">在一起的第 {{daysCount}} 天</text>
+  </view>
+
+  <view class="love-card" bindtap="showRandomLoveMessage">
+    <text>点击获取今日情话</text>
+  </view>
+
+  <view class="photo-wall">
+    <text class="section-title">我们的照片墙</text>
+    <!-- 添加照片展示区域 -->
+  </view>
+
+  <view class="wishes">
+    <text class="section-title">我们的愿望清单</text>
+    <view class="wish-list">
+      <view class="wish-item" wx:for="{{wishes}}" wx:key="index">
+        <checkbox checked="{{item.completed}}"/>
+        <text>{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,72 @@
+<!--pages/profile/edit/edit.wxml-->
+<view class="container">
+  <view class="edit-form">
+    <!-- 头像 -->
+    <view class="form-item avatar-item">
+      <text class="label">头像</text>
+      <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="chooseAvatar">
+        <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill" />
+      </button>
+    </view>
+
+    <!-- 昵称 -->
+    <view class="form-item">
+      <text class="label">昵称</text>
+      <input 
+        class="input" 
+        type="nickname" 
+        value="{{formData.nickName}}"
+        placeholder="请输入昵称"
+        bindinput="onInputNickName"
+      />
+    </view>
+
+    <!-- 性别 -->
+    <view class="form-item">
+      <text class="label">性别</text>
+      <picker 
+        class="picker" 
+        range="{{genderOptions}}" 
+        value="{{formData.gender}}"
+        bindchange="onSelectGender"
+      >
+        <view class="picker-text">{{formData.gender || '请选择性别'}}</view>
+      </picker>
+    </view>
+
+    <!-- 生日 -->
+    <view class="form-item">
+      <text class="label">生日</text>
+      <picker 
+        class="picker" 
+        mode="date" 
+        value="{{formData.birthday}}"
+        bindchange="onSelectBirthday"
+      >
+        <view class="picker-text">{{formData.birthday || '请选择生日'}}</view>
+      </picker>
+    </view>
+
+    <!-- 地区 -->
+    <view class="form-item">
+      <text class="label">地区</text>
+      <picker 
+        class="picker" 
+        mode="region" 
+        value="{{formData.location}}"
+        bindchange="onSelectLocation"
+      >
+        <view class="picker-text">{{formData.location || '请选择地区'}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <button 
+    class="save-btn" 
+    bindtap="saveProfile" 
+    loading="{{isLoading}}"
+  >
+    保存
+  </button>
+</view>

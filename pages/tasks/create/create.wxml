@@ -1,0 +1,76 @@
+<view class="container">
+  <form bindsubmit="submitTask">
+    <!-- 任务类型选择 -->
+    <view class="type-selector">
+      <view class="type-item {{taskType === 'daily' ? 'active' : ''}}"
+            bindtap="selectType" 
+            data-type="daily">
+       <image class="type-icon" src="https://cdn-icons-png.flaticon.com/128/2693/2693507.png"/>
+    <text>每日任务</text>
+      </view>
+      <view class="type-item {{taskType === 'challenge' ? 'active' : ''}}"
+            bindtap="selectType" 
+            data-type="challenge">
+         <image class="type-icon" src="https://cdn-icons-png.flaticon.com/128/2589/2589175.png"/>
+    <text>情侣挑战</text>
+      </view>
+      <view class="type-item {{taskType === 'custom' ? 'active' : ''}}"
+            bindtap="selectType" 
+            data-type="custom">
+  
+         <image class="type-icon" src="https://cdn-icons-png.flaticon.com/128/3161/3161837.png"/>
+    <text>自定义任务</text>
+      </view>
+    </view>
+
+    <!-- 任务表单 -->
+    <view class="form-section">
+      <view class="form-item">
+        <text class="label">任务标题</text>
+        <input class="input" 
+               name="title"
+               placeholder="请输入任务标题"
+               value="{{title}}"
+               maxlength="20"/>
+      </view>
+
+      <view class="form-item">
+        <text class="label">任务描述</text>
+        <textarea class="textarea" 
+                  name="description"
+                  placeholder="请输入任务描述"
+                  value="{{description}}"
+                  maxlength="200"/>
+      </view>
+
+      <view class="form-item">
+        <text class="label">截止时间</text>
+        <picker mode="date" 
+                value="{{deadline}}" 
+                start="{{today}}" 
+                bindchange="onDateChange">
+          <view class="picker">
+            <text>{{deadline || '请选择截止日期'}}</text>
+            <image class="arrow-icon" src="https://img.icons8.com/material-outlined/96/999999/forward.png"/>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <text class="label">任务奖励</text>
+        <input class="input" 
+               name="reward"
+               placeholder="请输入任务奖励"
+               value="{{reward}}"
+               maxlength="50"/>
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <button class="submit-btn" 
+            form-type="submit"
+            hover-class="button-hover">
+      {{isEdit ? '保存修改' : '创建任务'}}
+    </button>
+  </form>
+</view> 

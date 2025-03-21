@@ -1,0 +1,63 @@
+<view class="container">
+  <view class="section">
+    <view class="section-title">通知设置</view>
+    <view class="setting-item">
+      <text>接收通知</text>
+      <switch checked="{{settings.notifications}}" bindchange="toggleSetting" data-key="notifications" color="#ff6b81" />
+    </view>
+    <view class="setting-item">
+      <text>声音提醒</text>
+      <switch checked="{{settings.sound}}" bindchange="toggleSetting" data-key="sound" color="#ff6b81" />
+    </view>
+    <view class="setting-item">
+      <text>震动提醒</text>
+      <switch checked="{{settings.vibration}}" bindchange="toggleSetting" data-key="vibration" color="#ff6b81" />
+    </view>
+  </view>
+  
+  <view class="section">
+    <view class="section-title">每日提醒</view>
+    <view class="setting-item">
+      <text>开启每日提醒</text>
+      <switch checked="{{settings.dailyReminder}}" bindchange="toggleSetting" data-key="dailyReminder" color="#ff6b81" />
+    </view>
+    <view class="setting-item" wx:if="{{settings.dailyReminder}}">
+      <text>提醒时间</text>
+      <picker mode="time" value="{{settings.reminderTime}}" bindchange="selectReminderTime">
+        <view class="picker-text">{{settings.reminderTime}}</view>
+      </picker>
+    </view>
+  </view>
+  
+  <view class="section">
+    <view class="section-title">主题设置</view>
+    <view class="theme-group">
+      <view 
+        class="theme-option {{settings.theme === 'light' ? 'active' : ''}}" 
+        bindtap="selectTheme" 
+        data-theme="light"
+      >
+        <view class="theme-preview light"></view>
+        <text>浅色</text>
+      </view>
+      <view 
+        class="theme-option {{settings.theme === 'dark' ? 'active' : ''}}" 
+        bindtap="selectTheme" 
+        data-theme="dark"
+      >
+        <view class="theme-preview dark"></view>
+        <text>深色</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="section">
+    <view class="section-title">其他设置</view>
+    <view class="setting-item" bindtap="clearCache">
+      <text>清除缓存</text>
+      <view class="arrow"></view>
+    </view>
+  </view>
+  
+  <view class="logout-btn" bindtap="logout">退出登录</view>
+</view> 

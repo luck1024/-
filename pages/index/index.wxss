@@ -1,0 +1,610 @@
+page {
+  background: #fafafa;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  padding-bottom: 30rpx;
+  position: relative;
+}
+
+/* 顶部卡片 */
+.love-card {
+  position: relative;
+  height: 400rpx;
+  border-radius: 30rpx;
+  overflow: hidden;
+  box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.1);
+}
+
+.love-bg {
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.love-content {
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+
+.avatar-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.boy-avatar, .girl-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid #fff;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.2);
+}
+
+.love-days {
+  margin: 0 40rpx;
+  color: #fff;
+}
+
+.days-count {
+  font-size: 60rpx;
+  font-weight: bold;
+  text-shadow: 0 2rpx 10rpx rgba(0,0,0,0.3);
+}
+
+.days-text {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+.love-date {
+  color: #fff;
+  font-size: 28rpx;
+  opacity: 0.9;
+  text-shadow: 0 2rpx 8rpx rgba(0,0,0,0.3);
+}
+
+/* 心情选择器 */
+.mood-selector {
+  margin: 40rpx 0;
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05);
+}
+
+.section-title {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+  display: block;
+  margin-left: 20px;
+}
+
+.mood-scroll {
+  white-space: nowrap;
+}
+
+.mood-item {
+  display: inline-block;
+  padding: 20rpx 40rpx;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.mood-item.active {
+  transform: scale(1.1);
+}
+
+.mood-item image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 10rpx;
+}
+
+.mood-item text {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+}
+
+/* 照片墙 */
+.photo-wall {
+  margin: 30rpx 0;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding: 0 10rpx;
+}
+
+.section-header .title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.section-header .more {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10rpx;
+}
+
+.photo-item {
+  position: relative;
+  padding-bottom: 100%;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.photo-item image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10rpx;
+  background: linear-gradient(transparent, rgba(0,0,0,0.5));
+}
+
+.photo-date {
+  color: #fff;
+  font-size: 20rpx;
+  text-shadow: 0 1rpx 2rpx rgba(0,0,0,0.3);
+}
+
+/* 倒计时区域 */
+.countdown-section {
+  margin: 30rpx 0;
+  display: flex;
+  gap: 20rpx;
+}
+
+.countdown-card {
+  flex: 1;
+  background: linear-gradient(135deg, #ffd1d1, #ff9ecd);
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(255,158,205,0.2);
+}
+
+.countdown-content {
+  text-align: center;
+  color: #fff;
+}
+
+.countdown-title {
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+  font-weight: 500;
+}
+
+.countdown-title text {
+  font-size: 24rpx;
+  opacity: 0.8;
+  margin-left: 8rpx;
+}
+
+.countdown-days {
+  margin: 10rpx 0;
+}
+
+.countdown-days .number {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.countdown-days .unit {
+  font-size: 24rpx;
+  margin-left: 4rpx;
+}
+
+.countdown-date {
+  font-size: 22rpx;
+  opacity: 0.9;
+  margin-top: 8rpx;
+}
+
+/* 功能区 */
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.feature-item {
+  background: #fff;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+
+.feature-item:active {
+  transform: scale(0.95);
+}
+
+.feature-item image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 10rpx;
+}
+
+.feature-item text {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+}
+
+/* 悬浮按钮 */
+.float-btn {
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+  z-index: 1000;
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(45deg, #ff6b81, #ff4757);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 20rpx rgba(255,107,129,0.3);
+  animation: float 3s infinite ease-in-out;
+}
+
+.float-btn image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10rpx); }
+}
+
+/* 背景图片 */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400rpx;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-image {
+  width: 100%;
+  height: 100%;
+}
+
+.bg-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0));
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  z-index: 10;
+  position: relative;
+}
+
+.loading-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid #f3f3f3;
+  border-top: 6rpx solid #ff6b81;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 头部区域 */
+.header {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40rpx 30rpx;
+  border-radius: 0 0 30rpx 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 30rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.couple-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-bottom: 10rpx;
+}
+
+.boy-avatar {
+  border: 4rpx solid #6bb5ff;
+}
+
+.girl-avatar {
+  border: 4rpx solid #ff6b81;
+}
+
+.avatar-name {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.heart-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heart {
+  width: 60rpx;
+  height: 60rpx;
+  background-color: #ff6b81;
+  transform: rotate(45deg);
+  position: relative;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  width: 60rpx;
+  height: 60rpx;
+  background-color: #ff6b81;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart:before {
+  top: -30rpx;
+  left: 0;
+}
+
+.heart:after {
+  top: 0;
+  left: -30rpx;
+}
+
+.days-count {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.add-partner {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10rpx;
+}
+
+.add-icon {
+  font-size: 60rpx;
+  color: #999;
+}
+
+.anniversary {
+  text-align: center;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.anniversary-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.anniversary-date {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 卡片通用样式 */
+.moments-card,
+.mood-card,
+.tasks-card {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin: 0 30rpx 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-more {
+  font-size: 24rpx;
+  color: #999;
+  font-weight: normal;
+}
+
+/* 美好瞬间 */
+.moments-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10rpx;
+}
+
+.moment-item {
+  width: calc(33.33% - 20rpx);
+  margin: 10rpx;
+  position: relative;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.moment-image {
+  width: 100%;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+
+.moment-desc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10rpx;
+  font-size: 20rpx;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  text-align: center;
+}
+
+/* 心情卡片 */
+.mood-content {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.mood-emoji {
+  font-size: 60rpx;
+  margin-right: 20rpx;
+}
+
+.mood-text {
+  font-size: 28rpx;
+  color: #666;
+  flex: 1;
+}
+
+.mood-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx 0;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+
+.add-mood-btn {
+  background-color: #ff6b81;
+  color: #fff;
+  font-size: 28rpx;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+}
+
+/* 任务列表 */
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-date {
+  font-size: 24rpx;
+  color: #999;
+  width: 160rpx;
+}
+
+.task-title {
+  font-size: 28rpx;
+  color: #333;
+  flex: 1;
+}
+
+/* 空列表 */
+.empty-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0;
+}
+
+.empty-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 20rpx;
+}

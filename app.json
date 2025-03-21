@@ -1,0 +1,98 @@
+{
+  "pages": [
+    "pages/auth/login/login",
+    "pages/index/index",
+    "pages/album/album",
+    "pages/tasks/tasks",
+    "pages/letter/letter",
+    "pages/profile/profile",
+    "pages/moments/moments",
+    "pages/letter/write/write",
+    "pages/moments/post/post",
+    "pages/wishes/wishes",
+    "pages/auth/agreement/agreement",
+    "pages/auth/privacy/privacy",
+    "pages/moment/publish/publish",
+    "pages/moment/detail/detail",
+    "pages/letters/detail/detail",
+    "pages/tasks/create/create",
+    "pages/tasks/detail/detail",
+    "pages/profile/edit/edit",
+    "pages/profile/settings/settings",
+    "pages/profile/invite/invite",
+    "pages/invitation/accept",
+    "pages/notifications/notifications",
+    "pages/profile/feedback/feedback",
+    "pages/profile/about/about",
+    "pages/album/create-category/create-category",
+    "pages/mood/mood",
+    "pages/mood/record/record",
+    "pages/mood/detail/detail",
+    "pages/invite/invite",
+    "pages/invite/accept/accept"
+  ],
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF69B4",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/q.png",
+        "selectedIconPath": "images/q1.png"
+      },
+      {
+        "pagePath": "pages/album/album",
+        "text": "相册",
+        "iconPath": "images/xc.png",
+        "selectedIconPath": "images/xc1.png"
+      },
+      {
+        "pagePath": "pages/tasks/tasks",
+        "text": "任务",
+        "iconPath": "images/rw.png",
+        "selectedIconPath": "images/rw1.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于照片位置的记录"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "恋爱记录",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index",
+    "van-skeleton": "@vant/weapp/skeleton/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "requiredPrivateInfos": [
+    "chooseLocation",
+    "getLocation"
+  ],
+  "functionalPages": true,
+  "sitemapLocation": "sitemap.json"
+}

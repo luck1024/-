@@ -1,0 +1,12 @@
+<!--pages/thumbs/thumbs.wxml-->
+<view wx:if="{{!list}}">
+  <van-skeleton animate="true" title  avatar row="3" />
+  <van-skeleton title avatar row="3" />
+  <van-skeleton title avatar row="3" />
+  <van-skeleton title avatar row="3" />
+  <van-skeleton title avatar row="3" />
+</view>
+<view  wx:if="{{list}}">
+  <van-empty description="暂无被点赞内容" />
+</view>
+

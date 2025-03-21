@@ -1,0 +1,100 @@
+<view class="container">
+  <view class="loading" wx:if="{{isLoading}}">
+    <view class="loading-icon"></view>
+  </view>
+  
+  <block wx:elif="{{moment}}">
+    <view class="moment">
+      <view class="moment-header">
+        <image class="avatar" src="{{moment.user.avatarUrl || 'https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png'}}" mode="aspectFill"></image>
+        <view class="user-info">
+          <view class="nickname">{{moment.user.nickName || '未知用户'}}</view>
+          <view class="time">{{moment.createTime}}</view>
+        </view>
+      </view>
+      
+      <view class="moment-content">
+        <text class="text">{{moment.content}}</text>
+        
+        <view class="images" wx:if="{{moment.images && moment.images.length > 0}}">
+          <block wx:for="{{moment.images}}" wx:key="index">
+            <image 
+              class="image {{moment.images.length === 1 ? 'single' : moment.images.length === 2 || moment.images.length === 4 ? 'double' : ''}}" 
+              src="{{item}}" 
+              mode="aspectFill" 
+              bindtap="previewImage" 
+              data-index="{{index}}"
+            ></image>
+          </block>
+        </view>
+        
+        <view class="location" wx:if="{{moment.location}}">
+          <text class="location-icon">📍</text>
+          <text class="location-text">{{moment.location}}</text>
+        </view>
+      </view>
+      
+      <view class="moment-footer">
+        <view class="action-item" bindtap="toggleLike">
+          <view class="action-icon {{moment.isLiked ? 'liked' : ''}}">❤</view>
+          <view class="action-text">{{moment.likeCount || 0}}</view>
+        </view>
+        
+        <view class="action-item">
+          <view class="action-icon">💬</view>
+          <view class="action-text">{{moment.commentCount || 0}}</view>
+        </view>
+        
+        <button class="share-btn" open-type="share">
+          <view class="action-icon">🔗</view>
+          <view class="action-text">分享</view>
+        </button>
+      </view>
+    </view>
+    
+    <view class="divider"></view>
+    
+    <view class="comments-section">
+      <view class="section-title">评论 ({{moment.commentCount || 0}})</view>
+      
+      <view class="comments-list" wx:if="{{comments.length > 0}}">
+        <block wx:for="{{comments}}" wx:key="_id">
+          <view class="comment-item">
+            <image class="comment-avatar" src="{{item.user.avatarUrl || 'https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png'}}" mode="aspectFill"></image>
+            <view class="comment-content">
+              <view class="comment-user">{{item.user.nickName || '未知用户'}}</view>
+              <view class="comment-text">{{item.content}}</view>
+              <view class="comment-time">{{item.createTime}}</view>
+            </view>
+            <view class="comment-delete" wx:if="{{item.isOwner}}" bindtap="deleteComment" data-comment-id="{{item._id}}">删除</view>
+          </view>
+        </block>
+        
+        <view class="loading-more" wx:if="{{isLoadingComments}}">
+          <view class="loading-icon small"></view>
+          <text>加载中...</text>
+        </view>
+        
+        <view class="no-more" wx:if="{{!hasMoreComments && comments.length > 0}}">
+          没有更多评论了
+        </view>
+      </view>
+      
+      <view class="no-comments" wx:else>
+        <view class="no-comments-icon">💬</view>
+        <view class="no-comments-text">暂无评论，快来发表第一条评论吧</view>
+      </view>
+    </view>
+  </block>
+  
+  <view class="error" wx:else>
+    <view class="error-icon">❌</view>
+    <view class="error-text">加载失败，请重试</view>
+    <button class="retry-btn" bindtap="loadMomentDetail">重新加载</button>
+  </view>
+  
+  <view class="comment-input-container">
+    <input class="comment-input" placeholder="写评论..." value="{{commentContent}}" bindinput="inputComment" confirm-type="send" bindconfirm="submitComment" />
+    <button class="send-btn" bindtap="submitComment">发送</button>
+  </view>
+</view> 

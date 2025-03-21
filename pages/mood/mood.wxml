@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="loading" wx:if="{{isLoading}}">
+    <view class="loading-icon"></view>
+    <view class="loading-text">加载中...</view>
+  </view>
+  
+  <block wx:else>
+    <!-- 头部 -->
+    <view class="header">
+      <view class="month-selector">
+        <picker mode="selector" range="{{months}}" range-key="text" bindchange="changeMonth">
+          <view class="current-month">
+            <text>{{currentMonth}}</text>
+            <view class="arrow-down"></view>
+          </view>
+        </picker>
+      </view>
+      <view class="add-btn" bindtap="goToRecordMood">记录心情</view>
+    </view>
+    
+    <!-- 心情列表 -->
+    <view class="mood-list" wx:if="{{moods.length > 0}}">
+      <view 
+        class="mood-item" 
+        wx:for="{{moods}}" 
+        wx:key="_id"
+        bindtap="viewMoodDetail"
+        data-id="{{item._id}}"
+      >
+        <view class="mood-date">{{item.date}}</view>
+        <view class="mood-content">
+          <view class="mood-emoji">{{item.emoji}}</view>
+          <view class="mood-text">{{item.text}}</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 空状态 -->
+    <view class="empty-state" wx:else>
+      <image class="empty-icon" src="{{app.globalData.images.emptyMoments}}" mode="aspectFit"></image>
+      <view class="empty-text">这个月还没有记录心情~</view>
+      <view class="record-btn" bindtap="goToRecordMood">记录今日心情</view>
+    </view>
+  </block>
+</view> 

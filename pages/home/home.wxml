@@ -1,0 +1,107 @@
+<view>
+  <!-- 上侧部分 -->
+  <view class="top-view">
+    <!-- 用户信息开始 -->
+    <view class="user">
+      <!-- 头像开始 -->
+      <view class="row">
+        <image class="avatar" wx:if="{{userInfo}}" src="{{userInfo.avatarUrl}}"></image>
+        <image class="avatar" wx:else="{{userInfo}}" src="https://thirdwx.qlogo.cn/mmopen/vi_32/POgEwh4mIHO4nibH0KlMECNjjGxQUq24ZEaGT4poC6icRiccVGKSyXwibcPq4BWmiaIGuG1icwxaQX6grC9VemZoJ8rg/132"></image>
+      </view>
+      <!-- 头像结束 -->
+
+      <!-- 用户名称开始 -->
+      <view class="name" wx:if="{{userInfo}}">
+        <view bindtap="onClickLogout">{{userInfo.nickName}}</view>
+      </view>
+      <view class="name" wx:else="{{userInfo}}">
+        <view bindtap="login">登录</view>
+        |
+        <!-- <navigator url="/pages/auth/auth">注册</navigator> -->
+      </view>
+      <!-- 用户名称结束 -->
+      <!-- 个人主页开始 -->
+      <view class="site" bindtap="personal">查看个人主页</view>
+      <!-- 个人主页结束 -->
+    </view>
+    <!-- 关注 粉丝 赞与收藏开始 -->
+    <view class="numbers">
+      <view class="row">
+        <text>0</text>
+        <text>关注</text>
+      </view>
+      <view class="row">
+        <text>0</text>
+        <text>粉丝</text>
+      </view>
+      <view class="row">
+        <text>0</text>
+        <text>已点赞</text>
+      </view>
+      <!-- <view class="row">
+        <text>0</text>
+        <text>好友动态</text>
+      </view> -->
+    </view>
+
+    <!-- 关注 粉丝 赞与收藏结束 -->
+    <!-- 用户信息结束 -->
+  </view>
+</view>
+
+<!-- 待支付开始 -->
+<view class="middle-view">
+  <view class="item"  bindtap="thumbs">
+    <image src="/image/daifukuan.png"></image>
+    <text>已点赞</text>
+  </view>
+  <view class="item" bindtap="submitted">
+    <image src="/image/yizhifu.png"></image>
+    <text>已投稿</text>
+  </view>
+  <view class="item" bindtap="contribute">
+    <image src="/image/yishouhuo.png"></image>
+    <text>投稿箱</text>
+  </view>
+  <view class="item" bindtap="like">
+    <image src="/image/daipingjia.png"></image>
+    <text>被点赞</text>
+  </view>
+</view>
+<!-- 待支付结束 -->
+
+<!-- 钱包 优惠券 开始 -->
+<view class="function-view">
+  <view class="item">
+    <view class="left">我的帖子</view>
+    <view class="right">
+
+      <text style="color: red;">0 </text>
+
+      <!-- <image class="go-icon" src='/image/money.png'></image> -->
+    </view>
+  </view>
+
+  <view class="item">
+    <view class="left">领劵中心</view>
+    <view class="right">
+      <text>你的福利都在这里 </text>
+      <!-- <image class="go-icon" src='/image/fuli.png'></image> -->
+    </view>
+  </view>
+</view>
+<!-- 钱包 优惠券 结束 -->
+
+<!-- 官方微信客服开始 -->
+<view class="contact-view">
+  <button open-type="contact">
+    <image src="/image/kefu.png"></image>
+    <text>人工客服</text>
+  </button>
+  <button bindtap="handlePay">
+    <image src="/image/fankui.png"></image>
+    <!-- <text>打赏0.01元</text> -->
+    <text>其他</text>
+  </button>
+</view>
+<!-- 官方微信客服结束 -->

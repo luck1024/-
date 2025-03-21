@@ -1,0 +1,146 @@
+<!--pages/tasks/detail/detail.wxml-->
+<view class="page-container">
+  <!-- 加载中 -->
+  <view class="loading-container" wx:if="{{isLoading}}">
+    <view class="loading-circle"></view>
+  </view>
+  
+  <!-- 任务详情 -->
+  <block wx:else>
+    <!-- 标题部分 -->
+    <view class="section">
+      <view class="title-container">
+        <text class="task-title">{{task.title}}</text>
+        <text class="task-status status-{{task.status}}">{{statusText[task.status]}}</text>
+      </view>
+    </view>
+    
+    <!-- 描述部分 -->
+    <view class="section">
+      <view class="section-title">任务描述</view>
+      <view class="section-content">
+        <text class="task-description">{{task.description || '暂无描述'}}</text>
+      </view>
+    </view>
+    
+    <!-- 时间信息 -->
+    <view class="section time-section">
+      <view class="time-item">
+        <text class="time-label">创建时间</text>
+        <text class="time-value">{{task.formattedTime}}</text>
+      </view>
+      
+      <view class="time-item" wx:if="{{task.submitFormattedTime}}">
+        <text class="time-label">提交时间</text>
+        <text class="time-value">{{task.submitFormattedTime}}</text>
+      </view>
+      
+      <view class="time-item" wx:if="{{task.completedFormattedTime}}">
+        <text class="time-label">完成时间</text>
+        <text class="time-value">{{task.completedFormattedTime}}</text>
+      </view>
+    </view>
+    
+    <!-- 提交内容 -->
+    <view class="section" wx:if="{{task.submission}}">
+      <view class="section-title">提交内容</view>
+      <view class="section-content">
+        <text class="submission-content">{{task.submission.content}}</text>
+        
+        <view class="image-list" wx:if="{{task.submission.images.length > 0}}">
+          <view 
+            class="image-wrapper" 
+            wx:for="{{task.submission.images}}" 
+            wx:key="*this"
+            bindtap="previewImage"
+            data-url="{{item}}"
+          >
+            <image src="{{item}}" mode="aspectFill" class="submission-image" />
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 操作按钮区域 -->
+    <view class="action-area" wx:if="{{isOwner}}">
+      <button 
+        class="action-button primary-button" 
+        wx:if="{{task.status === 'pending' || task.status === 'inProgress'}}"
+        bindtap="showSubmitPopup">
+        提交任务
+      </button>
+      
+      <button 
+        class="action-button primary-button"
+        wx:if="{{task.status === 'submitted'}}"
+        bindtap="completeTask">
+        完成任务
+      </button>
+      
+      <view class="button-group">
+        <button class="action-button secondary-button" bindtap="editTask">编辑</button>
+        <button class="action-button warning-button" bindtap="deleteTask">删除</button>
+      </view>
+    </view>
+  </block>
+  
+  <!-- 提交弹窗 -->
+  <view class="popup-mask {{showSubmitPopup ? 'show' : ''}}" bindtap="hideSubmitPopup"></view>
+  <view class="submit-popup {{showSubmitPopup ? 'show' : ''}}">
+    <view class="popup-header">
+      <text class="popup-title">提交任务</text>
+      <text class="popup-close" bindtap="hideSubmitPopup">×</text>
+    </view>
+    
+    <view class="popup-content">
+      <view class="form-item">
+        <textarea 
+          class="form-textarea" 
+          placeholder="请输入提交内容" 
+          value="{{submitContent}}"
+          bindinput="onContentInput"
+        ></textarea>
+      </view>
+      
+      <view class="form-item">
+        <view class="image-upload-area">
+          <view 
+            class="image-item" 
+            wx:for="{{submitImages}}" 
+            wx:key="*this"
+          >
+            <image 
+              src="{{item}}" 
+              mode="aspectFill" 
+              bindtap="previewImage"
+              data-url="{{item}}"
+            />
+            <view 
+              class="remove-icon"
+              catchtap="removeImage"
+              data-index="{{index}}"
+            >×</view>
+          </view>
+          
+          <view 
+            class="add-image-button" 
+            bindtap="chooseImages"
+            wx:if="{{submitImages.length < 9}}"
+          >
+            <view class="add-icon">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="popup-footer">
+      <button 
+        class="submit-button {{submitting ? 'disabled' : ''}}"
+        disabled="{{submitting}}"
+        bindtap="submitTask"
+      >
+        {{submitting ? '提交中...' : '提交'}}
+      </button>
+    </view>
+  </view>
+</view>

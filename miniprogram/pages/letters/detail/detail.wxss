@@ -1,0 +1,152 @@
+/* pages/letters/detail/detail.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  padding-bottom: 40rpx;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300rpx;
+}
+
+.loading-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid #f3f3f3;
+  border-top: 6rpx solid #ff6b81;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.letter-header {
+  background-color: #fff;
+  padding: 40rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.sender {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.avatar {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  margin: 0 10rpx;
+}
+
+.name {
+  color: #333;
+}
+
+.time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.letter-content {
+  background-color: #fff;
+  padding: 30rpx;
+  margin-top: 20rpx;
+}
+
+.text {
+  font-size: 30rpx;
+  line-height: 1.8;
+  color: #333;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.images {
+  margin-top: 30rpx;
+}
+
+.image {
+  width: 100%;
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+}
+
+.letter-footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+
+.action-btn {
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+}
+
+.reply {
+  background-color: #ff6b81;
+  color: #fff;
+}
+
+.delete {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.share {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.error-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.error-text {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+}
+
+.retry-btn {
+  font-size: 28rpx;
+  color: #fff;
+  background-color: #ff6b81;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+} 

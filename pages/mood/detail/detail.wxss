@@ -1,0 +1,107 @@
+/* pages/mood/detail/detail.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  padding: 30rpx;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loading-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid #f3f3f3;
+  border-top: 6rpx solid #ff6b81;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 心情详情 */
+.mood-card {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mood-date {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 30rpx;
+}
+
+.mood-emoji {
+  font-size: 100rpx;
+  margin-bottom: 30rpx;
+}
+
+.mood-text {
+  font-size: 32rpx;
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* 操作按钮 */
+.action-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-btn {
+  width: 48%;
+  font-size: 32rpx;
+  border-radius: 50rpx;
+}
+
+.edit-btn {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.delete-btn {
+  background-color: #ff6b81;
+  color: #fff;
+}
+
+/* 未找到 */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.not-found-text {
+  font-size: 32rpx;
+  color: #999;
+  margin-bottom: 30rpx;
+}
+
+.back-btn {
+  font-size: 28rpx;
+  color: #ff6b81;
+  text-decoration: underline;
+} 

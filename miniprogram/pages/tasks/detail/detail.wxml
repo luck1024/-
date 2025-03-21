@@ -1,0 +1,133 @@
+<view class="container">
+  <view class="loading" wx:if="{{isLoading}}">
+    <view class="loading-icon"></view>
+  </view>
+  
+  <block wx:elif="{{task}}">
+    <view class="task-card">
+      <block wx:if="{{!isEditing}}">
+        <view class="task-header">
+          <view class="title">{{task.title}}</view>
+          <view class="status {{task.status}}">{{task.status === 'pending' ? '进行中' : '已完成'}}</view>
+        </view>
+        
+        <view class="task-content">
+          <view class="info-item" wx:if="{{task.description}}">
+            <view class="label">任务描述：</view>
+            <view class="value">{{task.description}}</view>
+          </view>
+          
+          <view class="info-item" wx:if="{{task.deadline}}">
+            <view class="label">截止日期：</view>
+            <view class="value">{{task.deadline}}</view>
+          </view>
+          
+          <view class="info-item" wx:if="{{task.reminderTime}}">
+            <view class="label">提醒时间：</view>
+            <view class="value">{{task.reminderTime}}</view>
+          </view>
+          
+          <view class="info-item">
+            <view class="label">执行人：</view>
+            <view class="value">
+              {{task.assignee === 'self' ? '自己' : task.assignee === 'partner' ? '伴侣' : '共同'}}
+            </view>
+          </view>
+          
+          <view class="info-item">
+            <view class="label">优先级：</view>
+            <view class="value priority {{task.priority}}">
+              {{task.priority === 'low' ? '低' : task.priority === 'normal' ? '中' : '高'}}
+            </view>
+          </view>
+          
+          <view class="info-item" wx:if="{{task.completedTime}}">
+            <view class="label">完成时间：</view>
+            <view class="value">{{task.completedTime}}</view>
+          </view>
+        </view>
+        
+        <view class="task-footer">
+          <block wx:if="{{task.status === 'pending'}}">
+            <button class="action-btn edit" bindtap="toggleEdit">编辑</button>
+            <button class="action-btn complete" bindtap="completeTask">完成</button>
+          </block>
+          <button class="action-btn delete" bindtap="deleteTask">删除</button>
+        </view>
+      </block>
+      
+      <block wx:else>
+        <view class="form">
+          <view class="form-item">
+            <view class="label">任务标题</view>
+            <input class="input" value="{{editData.title}}" bindinput="inputTitle" maxlength="50" />
+          </view>
+          
+          <view class="form-item">
+            <view class="label">任务描述 (选填)</view>
+            <textarea class="textarea" value="{{editData.description}}" bindinput="inputDescription" maxlength="200" auto-height></textarea>
+          </view>
+          
+          <view class="form-item">
+            <view class="label">截止日期 (选填)</view>
+            <picker mode="date" value="{{editData.deadline}}" bindchange="selectDeadline">
+              <view class="picker {{editData.deadline ? '' : 'placeholder'}}">
+                {{editData.deadline || '请选择截止日期'}}
+              </view>
+            </picker>
+          </view>
+          
+          <view class="form-item">
+            <view class="label">提醒时间 (选填)</view>
+            <picker mode="time" value="{{editData.reminderTime}}" bindchange="selectReminderTime">
+              <view class="picker {{editData.reminderTime ? '' : 'placeholder'}}">
+                {{editData.reminderTime || '请选择提醒时间'}}
+              </view>
+            </picker>
+          </view>
+          
+          <view class="form-item">
+            <view class="label">执行人</view>
+            <view class="option-group">
+              <view class="option {{editData.assignee === 'self' ? 'active' : ''}}" bindtap="selectAssignee" data-value="self">
+                <view class="option-text">自己</view>
+              </view>
+              <view class="option {{editData.assignee === 'partner' ? 'active' : ''}}" bindtap="selectAssignee" data-value="partner">
+                <view class="option-text">伴侣</view>
+              </view>
+              <view class="option {{editData.assignee === 'both' ? 'active' : ''}}" bindtap="selectAssignee" data-value="both">
+                <view class="option-text">共同</view>
+              </view>
+            </view>
+          </view>
+          
+          <view class="form-item">
+            <view class="label">优先级</view>
+            <view class="option-group">
+              <view class="option {{editData.priority === 'low' ? 'active' : ''}}" bindtap="selectPriority" data-value="low">
+                <view class="option-text">低</view>
+              </view>
+              <view class="option {{editData.priority === 'normal' ? 'active' : ''}}" bindtap="selectPriority" data-value="normal">
+                <view class="option-text">中</view>
+              </view>
+              <view class="option {{editData.priority === 'high' ? 'active' : ''}}" bindtap="selectPriority" data-value="high">
+                <view class="option-text">高</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="edit-footer">
+          <button class="action-btn cancel" bindtap="toggleEdit">取消</button>
+          <button class="action-btn save" bindtap="saveEdit" loading="{{isLoading}}">保存</button>
+        </view>
+      </block>
+    </view>
+  </block>
+  
+  <view class="error" wx:else>
+    <view class="error-icon">❌</view>
+    <view class="error-text">加载失败，请重试</view>
+    <button class="retry-btn" bindtap="loadTaskDetail">重新加载</button>
+  </view>
+</view> 

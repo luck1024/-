@@ -1,0 +1,169 @@
+<view class="container1">
+  <!-- 顶部统计 -->
+  <view class="stats-bar">
+    <view class="stat-item">
+      <text class="stat-num">{{stats.total}}</text>
+      <text class="stat-label">全部</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.completed}}</text>
+      <text class="stat-label">已完成</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-num">{{stats.urgent}}</text>
+      <text class="stat-label">紧急</text>
+    </view>
+  </view>
+
+  <!-- 搜索框 -->
+  <view class="search-box">
+    <image class="search-icon" src="https://img.alicdn.com/imgextra/i4/O1CN01sHxFyG1tjwOVxoMwI_!!6000000005935-2-tps-200-200.png" mode="aspectFit"/>
+    <input class="search-input" 
+           placeholder="搜索心愿..." 
+           bindinput="onSearch"
+           value="{{searchKeyword}}"/>
+  </view>
+
+  <!-- 分类选择器 -->
+  <scroll-view scroll-x class="category-scroll" enhanced show-scrollbar="{{false}}">
+    <view class="category-list">
+      <view class="category-item {{selectedCategory === item ? 'active' : ''}}"
+            wx:for="{{categories}}"
+            wx:key="*this"
+            bindtap="filterByCategory"
+            data-category="{{item}}">
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 排序选择器 -->
+  <view class="sort-bar">
+    <view class="sort-item {{sortType === 'date' ? 'active' : ''}}"
+          bindtap="sortWishes"
+          data-type="date">
+      时间
+    </view>
+    <view class="sort-item {{sortType === 'priority' ? 'active' : ''}}"
+          bindtap="sortWishes"
+          data-type="priority">
+      优先级
+    </view>
+    <view class="sort-item {{sortType === 'completed' ? 'active' : ''}}"
+          bindtap="sortWishes"
+          data-type="completed">
+      完成状态
+    </view>
+  </view>
+
+  <!-- 心愿列表 -->
+  <view class="wish-list">
+    <view class="wish-item {{item.completed ? 'completed' : ''}}" 
+          wx:for="{{filteredWishes}}" 
+          wx:key="id">
+      <view class="wish-header">
+        <view class="checkbox" bindtap="toggleWish" data-id="{{item.id}}">
+          <view class="check-inner {{item.completed ? 'checked' : ''}}"></view>
+        </view>
+        <view class="wish-content">
+          <view class="wish-text">{{item.content}}</view>
+          <view class="wish-meta">
+            <text class="wish-date">{{item.date}}</text>
+            <text class="wish-category">{{item.category}}</text>
+            <view class="priority-dot {{priorities[item.priority].class}}"></view>
+          </view>
+        </view>
+        <view class="delete-btn" catchtap="deleteWish" data-id="{{item.id}}">
+          <text>×</text>
+        </view>
+      </view>
+      <view class="wish-footer" wx:if="{{item.note || item.dueDate}}">
+        <view class="note" wx:if="{{item.note}}">{{item.note}}</view>
+        <view class="due-date" wx:if="{{item.dueDate}}">截止: {{item.dueDate}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{wishes.length === 0}}">
+    <image class="empty-image" src="https://img.alicdn.com/imgextra/i1/O1CN01Rkj68T1YdFIKkEgUn_!!6000000003080-2-tps-200-200.png" mode="aspectFit"/>
+    <view class="empty-text">还没有心愿，快来添加吧</view>
+  </view>
+
+  <!-- 添加按钮 -->
+  <view class="add-btn" bindtap="showAddModal">
+    <text class="plus">+</text>
+  </view>
+
+  <!-- 添加心愿弹窗 -->
+  <view class="modal" wx:if="{{showModal}}">
+    <view class="modal-mask" bindtap="hideModal"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text>添加心愿</text>
+      </view>
+      <view class="modal-body">
+        <textarea class="wish-input" 
+                  placeholder="输入你的心愿..." 
+                  maxlength="100"
+                  bindinput="onInput"
+                  value="{{newWish}}"/>
+        
+        <!-- 分类选择 -->
+        <view class="category-selector">
+          <text class="section-title">选择分类</text>
+          <view class="tag-list">
+            <view class="tag-item {{selectedTag === index ? 'active' : ''}}"
+                  wx:for="{{tags}}"
+                  wx:key="*this"
+                  bindtap="selectTag"
+                  data-index="{{index}}">
+              {{item}}
+            </view>
+          </view>
+        </view>
+
+        <!-- 优先级选择 -->
+        <view class="priority-selector">
+          <text class="section-title">设置优先级</text>
+          <view class="priority-list">
+            <view class="priority-item {{selectedPriority === index ? 'active' : ''}}"
+                  wx:for="{{priorities}}"
+                  wx:key="text"
+                  bindtap="selectPriority"
+                  data-index="{{index}}">
+              <view class="priority-dot {{item.class}}"></view>
+              <text>{{item.text}}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 截止日期选择 -->
+        <view class="date-picker">
+          <text class="section-title">截止日期</text>
+          <picker mode="date" 
+                  value="{{dueDate}}" 
+                  start="{{today}}" 
+                  bindchange="onDateChange">
+            <view class="picker-content">
+              <text>{{dueDate || '请选择日期'}}</text>
+            </view>
+          </picker>
+        </view>
+
+        <!-- 备注输入 -->
+        <view class="note-section">
+          <text class="section-title">添加备注</text>
+          <textarea class="note-input"
+                    placeholder="添加备注..."
+                    value="{{note}}"
+                    bindinput="onNoteInput"/>
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button class="cancel-btn" bindtap="hideModal">取消</button>
+        <button class="confirm-btn" bindtap="addWish">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

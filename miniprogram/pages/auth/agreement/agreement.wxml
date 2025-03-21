@@ -1,0 +1,31 @@
+<!-- pages/auth/agreement/agreement.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="title">用户服务协议</view>
+    <view class="update-time">最后更新时间：{{lastUpdated}}</view>
+  </view>
+  
+  <view class="content">
+    <view class="intro">
+      欢迎使用恋爱记事本！请您仔细阅读以下条款，使用我们的服务即表示您同意接受以下所有条款。
+    </view>
+    
+    <view class="section" wx:for="{{content}}" wx:key="title">
+      <view class="section-title">{{item.title}}</view>
+      <view 
+        class="paragraph" 
+        wx:for="{{item.paragraphs}}" 
+        wx:for-item="paragraph" 
+        wx:key="*this"
+      >
+        {{paragraph}}
+      </view>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <view class="footer-text">
+      如您对本协议有任何疑问，请联系我们的客服团队。
+    </view>
+  </view>
+</view>

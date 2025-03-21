@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="album-header">
+    <text class="title">我们的相册</text>
+    <text class="subtitle">{{totalPhotos}}张照片</text>
+  </view>
+
+  <scroll-view scroll-x class="category-scroll" enhanced show-scrollbar="{{false}}">
+    <view class="category-list">
+      <view 
+        class="category-item {{currentCategory === index ? 'active' : ''}}" 
+        wx:for="{{categories}}" 
+        wx:key="*this"
+        bindtap="switchCategory"
+        data-index="{{index}}">
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="photo-wall">
+    <block wx:if="{{albums.length > 0}}">
+      <view class="photo-item" 
+            wx:for="{{albums}}" 
+            wx:key="_id" 
+            bindtap="previewImage" 
+            bindlongpress="handleLongPress"
+            data-id="{{item._id}}"
+            data-url="{{item.imageUrl}}">
+        <image 
+          class="photo-image" 
+          src="{{item.imageUrl}}" 
+          mode="aspectFill" 
+          bindtap="previewImage"
+          data-index="{{index}}"
+        />
+        <view class="photo-info">
+          <text class="photo-date">{{item.formattedTime}}</text>
+          <text class="photo-location">{{item.description||item.title}}</text>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="no-photos">
+      暂无照片
+    </view>
+  </view>
+
+  <view class="upload-btn" bindtap="uploadPhoto">
+    <text class="plus">+</text>
+  </view>
+</view> 

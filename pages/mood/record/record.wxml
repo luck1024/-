@@ -1,0 +1,47 @@
+<view class="container">
+  <!-- 日期选择 -->
+  <view class="date-section">
+    <view class="section-title">日期</view>
+    <picker mode="date" value="{{date}}" start="2020-01-01" end="2030-12-31" bindchange="bindDateChange">
+      <view class="date-picker">
+        <text>{{date}}</text>
+        <view class="arrow-right"></view>
+      </view>
+    </picker>
+  </view>
+  
+  <!-- 表情选择 -->
+  <view class="emoji-section">
+    <view class="section-title">心情</view>
+    <view class="selected-emoji">{{emoji}}</view>
+    <scroll-view class="emoji-list" scroll-x>
+      <view 
+        class="emoji-item {{emoji === item ? 'active' : ''}}" 
+        wx:for="{{emojiList}}" 
+        wx:key="index"
+        bindtap="selectEmoji"
+        data-emoji="{{item}}"
+      >
+        {{item}}
+      </view>
+    </scroll-view>
+  </view>
+  
+  <!-- 心情内容 -->
+  <view class="content-section">
+    <view class="section-title">内容</view>
+    <textarea 
+      class="content-input" 
+      placeholder="今天的心情如何？" 
+      value="{{text}}"
+      bindinput="inputText"
+      maxlength="200"
+    ></textarea>
+    <view class="word-count">{{text.length}}/200</view>
+  </view>
+  
+  <!-- 保存按钮 -->
+  <view class="btn-section">
+    <button class="save-btn" bindtap="saveMood">保存</button>
+  </view>
+</view> 

@@ -1,0 +1,178 @@
+.container {
+  padding: 20rpx;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 发布框样式 */
+.post-box {
+    width: 90%;
+  background: #fff;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.post-box .avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.input-placeholder {
+  flex: 1;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.post-btn {
+  padding: 10rpx 30rpx;
+  background: #ff6b81;
+  color: #fff;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+}
+
+/* 动态列表样式 */
+.moment-item {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+.moments-list{
+    width: 90%;
+}
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.user-info .avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.user-detail {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+  display: block;
+}
+
+.time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.content {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+.image-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.image-list image {
+  width: 100%;
+  height: 200rpx;
+  border-radius: 8rpx;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.location image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+
+/* 互动区域样式 */
+.interaction {
+  display: flex;
+  border-top: 1rpx solid #f0f0f0;
+  padding-top: 20rpx;
+  margin-top: 20rpx;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  margin-right: 40rpx;
+}
+
+.action-btn image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 8rpx;
+}
+
+.action-btn text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 评论区域样式 */
+.comments {
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-top: 20rpx;
+}
+
+.comment-item {
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+}
+
+.comment-user {
+  color: #576b95;
+  font-weight: 500;
+  margin-right: 10rpx;
+}
+
+.comment-content {
+  color: #333;
+}
+
+/* 悬浮按钮样式 */
+.float-btn {
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(45deg, #ff6b81, #ff4757);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 20rpx rgba(255,107,129,0.3);
+}
+
+.float-btn image {
+  width: 50rpx;
+  height: 50rpx;
+} 

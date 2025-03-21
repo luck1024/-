@@ -1,0 +1,67 @@
+<view class="container">
+  <view class="header">
+    <image class="logo" src="/images/logo.png" mode="aspectFit"></image>
+    <view class="app-name">恋爱记事本</view>
+    <view class="version">Version {{version}}</view>
+  </view>
+  
+  <view class="section">
+    <view class="section-title">更新日志</view>
+    <view class="update-list">
+      <view class="update-item" wx:for="{{updateLog}}" wx:key="version">
+        <view class="update-header">
+          <text class="update-version">v{{item.version}}</text>
+          <text class="update-date">{{item.date}}</text>
+        </view>
+        <view class="update-content">
+          <view class="update-point" wx:for="{{item.content}}" wx:key="*this" wx:for-item="point">
+            • {{point}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="section">
+    <view class="section-title">联系我们</view>
+    <view class="contact-list">
+      <view class="contact-item" bindtap="copyWechat">
+        <view class="contact-icon">💬</view>
+        <view class="contact-info">
+          <view class="contact-name">客服微信</view>
+          <view class="contact-desc">工作日 9:00-18:00</view>
+        </view>
+        <view class="arrow"></view>
+      </view>
+      
+      <view class="contact-item" bindtap="sendFeedback">
+        <view class="contact-icon">📧</view>
+        <view class="contact-info">
+          <view class="contact-name">意见反馈</view>
+          <view class="contact-desc">帮助我们变得更好</view>
+        </view>
+        <view class="arrow"></view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="section">
+    <view class="section-title">法律条款</view>
+    <view class="legal-list">
+      <view class="legal-item" bindtap="viewUserAgreement">
+        <text>用户协议</text>
+        <view class="arrow"></view>
+      </view>
+      
+      <view class="legal-item" bindtap="viewPrivacyPolicy">
+        <text>隐私政策</text>
+        <view class="arrow"></view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <text>Copyright © 2024 恋爱记事本</text>
+    <text>All Rights Reserved</text>
+  </view>
+</view> 

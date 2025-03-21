@@ -1,0 +1,45 @@
+<!-- pages/auth/login/login.wxml -->
+<view class="container">
+  <view class="header">
+    <image class="logo" src="https://img.icons8.com/fluency/96/love-book.png" mode="aspectFit"></image>
+    <view class="title">恋爱记事本</view>
+    <view class="subtitle">记录你们的点点滴滴</view>
+  </view>
+  
+  <view class="content">
+    <button 
+      class="login-btn" 
+      bindtap="getUserProfile"
+      loading="{{isLoading}}"
+    >
+      微信一键登录
+    </button>
+    
+    <view class="tips">
+       <van-checkbox value="{{ isAgreed }}" bind:change="onChange">登录即表示同意 <text class="link" bindtap="viewAgreement">《用户协议》</text>
+      和
+      <text class="link" bindtap="viewPrivacy">《隐私政策》</text></van-checkbox>
+     
+    </view>
+  </view>
+  
+  <view class="features">
+    <view class="feature-item">
+      <view class="feature-icon">💌</view>
+      <view class="feature-title">情侣信件</view>
+      <view class="feature-desc">记录专属的情话</view>
+    </view>
+    
+    <view class="feature-item">
+      <view class="feature-icon">📝</view>
+      <view class="feature-title">共同任务</view>
+      <view class="feature-desc">规划美好未来</view>
+    </view>
+    
+    <view class="feature-item">
+      <view class="feature-icon">💕</view>
+      <view class="feature-title">甜蜜瞬间</view>
+      <view class="feature-desc">分享生活点滴</view>
+    </view>
+  </view>
+</view>

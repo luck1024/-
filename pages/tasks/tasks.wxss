@@ -1,0 +1,297 @@
+.container {
+  min-height: 100vh;
+  background: #f8f8f8;
+  padding: 20rpx;
+  padding-bottom: 120rpx;
+}
+
+/* 顶部轮播 */
+.task-banner {
+  height: 300rpx;
+  margin: 30rpx;
+}
+
+.banner-card {
+  height: 100%;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+.banner-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 16rpx;
+}
+
+.banner-desc {
+  font-size: 28rpx;
+  opacity: 0.9;
+  margin-bottom: 30rpx;
+}
+
+.banner-meta {
+  display: flex;
+  gap: 30rpx;
+  font-size: 24rpx;
+}
+
+/* 任务分类 */
+.task-categories {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  border-radius: 12rpx;
+}
+
+.category-item.active {
+  background: #fff5f5;
+}
+
+.category-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.category-item text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.category-item.active text {
+  color: #ff9a9e;
+}
+
+/* 进度部分 */
+.progress-section {
+  margin: 30rpx;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.06);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.progress-header .title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.progress-header .date {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.progress-bar {
+  height: 20rpx;
+  background: #f0f0f0;
+  border-radius: 10rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  border-radius: 10rpx;
+  position: relative;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  right: 10rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20rpx;
+  color: #fff;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item .num {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  display: block;
+}
+
+.stat-item .label {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+/* 任务列表 */
+.task-list {
+  padding: 10rpx;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.list-header .title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.list-header .more {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.task-item {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.task-info {
+  margin-bottom: 20rpx;
+}
+
+.task-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.task-desc {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.task-meta {
+  display: flex;
+  gap: 24rpx;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+}
+
+.meta-icon {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 6rpx;
+}
+
+.meta-item text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16rpx;
+}
+
+.action-btn {
+  padding: 12rpx;
+  border-radius: 50%;
+  background: #f8f8f8;
+}
+
+.action-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+/* 添加按钮 */
+.add-btn {
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6rpx 20rpx rgba(255,154,158,0.3);
+}
+
+.add-icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+ 
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 30rpx;
+  background: #fff;
+  box-shadow: 0 -4rpx 16rpx rgba(0,0,0,0.06);
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 40rpx;
+  background: #ff9a9e;
+  border-radius: 40rpx;
+  color: #fff;
+}
+
+.btn-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+
+/* 操作小图标 */
+.action-icon {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 6rpx;
+} 

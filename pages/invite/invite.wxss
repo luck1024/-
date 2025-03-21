@@ -1,0 +1,147 @@
+/* pages/invite/invite.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loading-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid #f3f3f3;
+  border-top: 6rpx solid #ff6b81;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 顶部图片 */
+.top-image {
+  width: 300rpx;
+  height: 300rpx;
+  margin: 50rpx 0;
+}
+
+/* 邀请说明 */
+.invite-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.invite-desc {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 50rpx;
+  text-align: center;
+}
+
+/* 邀请码区域 */
+.code-section {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.code-label {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+
+.code-value {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #ff6b81;
+  margin-bottom: 20rpx;
+  letter-spacing: 4rpx;
+}
+
+.code-tips {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 40rpx;
+}
+
+/* 操作按钮 */
+.action-btns {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.action-btn {
+  width: 48%;
+  font-size: 28rpx;
+  border-radius: 50rpx;
+}
+
+.copy-btn {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.share-btn {
+  background-color: #ff6b81;
+  color: #fff;
+}
+
+/* 生成邀请码按钮 */
+.generate-btn {
+  width: 100%;
+  background-color: #ff6b81;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 50rpx;
+  margin-bottom: 50rpx;
+}
+
+/* 接受邀请入口 */
+.accept-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50rpx;
+}
+
+.accept-title {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+
+.accept-btn {
+  font-size: 28rpx;
+  color: #ff6b81;
+  text-decoration: underline;
+} 

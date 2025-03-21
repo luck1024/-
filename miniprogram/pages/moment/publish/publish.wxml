@@ -1,0 +1,40 @@
+<view class="container">
+  <view class="form">
+    <view class="textarea-container">
+      <textarea class="content" placeholder="分享你的美好时刻..." value="{{content}}" bindinput="inputContent" maxlength="1000" auto-height></textarea>
+      <view class="word-count">{{content.length}}/1000</view>
+    </view>
+    
+    <view class="images-container">
+      <view class="images-list">
+        <block wx:for="{{images}}" wx:key="index">
+          <view class="image-item">
+            <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-index="{{index}}"></image>
+            <view class="delete-btn" catchtap="deleteImage" data-index="{{index}}">×</view>
+          </view>
+        </block>
+        
+        <view class="add-image" bindtap="chooseImage" wx:if="{{images.length < maxImageCount}}">
+          <view class="add-icon">+</view>
+        </view>
+      </view>
+      <view class="image-tip">最多上传{{maxImageCount}}张图片</view>
+    </view>
+    
+    <view class="options">
+      <view class="option-item" bindtap="getLocation">
+        <view class="option-icon">📍</view>
+        <view class="option-text">{{location || '所在位置'}}</view>
+      </view>
+      
+      <view class="option-item" bindtap="togglePublic">
+        <view class="option-icon">{{isPublic ? '🔓' : '🔒'}}</view>
+        <view class="option-text">{{isPublic ? '公开' : '仅伴侣可见'}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <button class="publish-btn" bindtap="publishMoment" loading="{{isLoading}}">发布</button>
+  </view>
+</view> 

@@ -1,0 +1,138 @@
+/* pages/notifications/notifications.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.notification-list {
+  padding: 20rpx 0;
+}
+
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 30rpx;
+  background-color: #fff;
+  margin-bottom: 2rpx;
+  position: relative;
+}
+
+.notification-item.unread {
+  background-color: #fff9fa;
+}
+
+.notification-icon {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.icon {
+  font-size: 40rpx;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.title {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.message {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+  line-height: 1.4;
+}
+
+.time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.unread-dot {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  width: 16rpx;
+  height: 16rpx;
+  background-color: #ff6b81;
+  border-radius: 50%;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30rpx 0;
+}
+
+.loading-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border: 4rpx solid #f3f3f3;
+  border-top: 4rpx solid #ff6b81;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 10rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.no-more {
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  font-size: 30rpx;
+  color: #999;
+}
+
+.loading-full {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loading-full .loading-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-bottom: 20rpx;
+}
+
+.loading-full text {
+  font-size: 30rpx;
+  color: #999;
+} 

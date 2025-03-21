@@ -1,0 +1,17 @@
+<!--pages/Extra/xgtx/xgtx.wxml-->
+
+<view>
+  <view bindtap="headimage" style=" height: 150rpx;line-height: 150rpx;" class="over"><text>修改头像</text>
+    <image src="{{head}}" />
+  </view>
+  <view class="over" style="display: flex;"><text>修改昵称</text>
+    <view>
+      <input type="nickname" value="{{nickname}}"
+      bindblur="themes" class="weui-input" placeholder="请输入昵称"/>
+    </view>
+  </view>
+
+  <!-- <view><text>修改昵称</text></view> -->
+  <button class="but" bindtap="amend">修改</button>
+  <button class="but but1" bindtap="cancel">取消</button>
+</view>

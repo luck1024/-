@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="loading" wx:if="{{isLoading}}">
+    <view class="loading-icon"></view>
+  </view>
+  
+  <block wx:elif="{{letter}}">
+    <view class="letter-header">
+      <view class="title">{{letter.title}}</view>
+      <view class="meta">
+        <view class="sender">
+          <text>{{letter.isSender ? '发送给：' : '来自：'}}</text>
+          <image class="avatar" src="{{letter.isSender ? letter.recipient.avatarUrl : letter.sender.avatarUrl}}" mode="aspectFill"></image>
+          <text class="name">{{letter.isSender ? letter.recipient.nickName : letter.sender.nickName}}</text>
+        </view>
+        <view class="time">{{letter.createTime}}</view>
+      </view>
+    </view>
+    
+    <view class="letter-content">
+      <text class="text">{{letter.content}}</text>
+      
+      <view class="images" wx:if="{{letter.images && letter.images.length > 0}}">
+        <block wx:for="{{letter.images}}" wx:key="index">
+          <image 
+            class="image" 
+            src="{{item}}" 
+            mode="widthFix" 
+            bindtap="previewImage" 
+            data-index="{{index}}"
+          ></image>
+        </block>
+      </view>
+    </view>
+    
+    <view class="letter-footer">
+      <button class="action-btn reply" bindtap="replyLetter">回复</button>
+      <button class="action-btn delete" bindtap="deleteLetter">删除</button>
+      <button class="action-btn share" open-type="share">分享</button>
+    </view>
+  </block>
+  
+  <view class="error" wx:else>
+    <view class="error-icon">❌</view>
+    <view class="error-text">加载失败，请重试</view>
+    <button class="retry-btn" bindtap="loadLetterDetail">重新加载</button>
+  </view>
+</view> 

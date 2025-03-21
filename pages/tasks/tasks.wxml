@@ -1,0 +1,113 @@
+<view class="container">
+  <!-- 顶部任务卡片轮播 -->
+  <swiper class="task-banner" 
+          autoplay circular 
+          interval="3000" 
+          duration="500">
+    <swiper-item wx:for="{{featuredTasks}}" wx:key="id">
+      <view class="banner-card" style="background: {{item.color}}">
+        <view class="banner-content">
+          <view class="banner-title">{{item.title}}</view>
+          <view class="banner-desc">{{item.description}}</view>
+          <view class="banner-meta">
+            <text class="participants">{{item.participants}}人参与</text>
+            <text class="reward">奖励: {{item.reward}}</text>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 任务分类 -->
+  <view class="task-categories">
+    <view class="category-item {{currentCategory === 'daily' ? 'active' : ''}}"
+          bindtap="switchCategory" 
+          data-type="daily">
+      <image class="category-icon" src="https://cdn-icons-png.flaticon.com/128/2693/2693507.png"/>
+      <text>每日任务</text>
+    </view>
+    <view class="category-item {{currentCategory === 'challenge' ? 'active' : ''}}"
+          bindtap="switchCategory" 
+          data-type="challenge">
+      <image class="category-icon" src="https://cdn-icons-png.flaticon.com/128/2589/2589175.png"/>
+      <text>情侣挑战</text>
+    </view>
+    <view class="category-item {{currentCategory === 'custom' ? 'active' : ''}}"
+          bindtap="switchCategory" 
+          data-type="custom">
+      <image class="category-icon" src="https://cdn-icons-png.flaticon.com/128/3161/3161837.png"/>
+      <text>自定义任务</text>
+    </view>
+  </view>
+
+  <!-- 任务进度 -->
+  <view class="progress-section">
+    <view class="progress-header">
+      <text class="title">今日进度</text>
+      <text class="date">{{currentDate}}</text>
+    </view>
+    <view class="progress-bar">
+      <view class="progress" style="width: {{progressRate}}%">
+        <view class="progress-text">{{progressRate}}%</view>
+      </view>
+    </view>
+    <view class="progress-stats">
+      <view class="stat-item">
+        <text class="num">{{completedToday}}</text>
+        <text class="label">已完成</text>
+      </view>
+      <view class="stat-item">
+        <text class="num">{{remainingToday}}</text>
+        <text class="label">待完成</text>
+      </view>
+      <view class="stat-item">
+        <text class="num">{{streakDays}}</text>
+        <text class="label">连续天数</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 任务列表 -->
+  <view class="task-list">
+    <view class="list-header">
+      <text class="title">进行中的任务</text>
+      <text class="more" bindtap="viewAllTasks">查看全部</text>
+    </view>
+    <view class="task-item" wx:for="{{tasks}}" wx:key="_id" bindtap="goToDetail" data-id="{{item._id}}">
+      <view class="task-info">
+        <view class="task-title">{{item.title}}</view>
+        <view class="task-desc">{{item.description}}</view>
+        <view class="task-meta">
+          <view class="meta-item">
+            <image class="meta-icon" src="https://img.icons8.com/material-outlined/96/999999/clock.png"/>
+            <text>{{item.deadline || '无限期'}}</text>
+          </view>
+          <view class="meta-item">
+            <image class="meta-icon" src="https://img.icons8.com/material-outlined/96/999999/gift.png"/>
+            <text>{{item.reward || '无奖励'}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 操作按钮 -->
+      <view class="action-buttons">
+        <view class="action-btn" catchtap="shareTask" data-id="{{item._id}}">
+          <image class="action-icon" src="https://img.icons8.com/material-outlined/96/666666/share.png"/>
+        </view>
+        <view class="action-btn" catchtap="editTask" data-id="{{item._id}}">
+          <image class="action-icon" src="https://img.icons8.com/material-outlined/96/666666/edit.png"/>
+        </view>
+        <view class="action-btn" catchtap="deleteTask" data-id="{{item._id}}">
+          <image class="action-icon" src="https://img.icons8.com/material-outlined/96/666666/trash.png"/>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 添加任务按钮 -->
+  <view class="add-btn" bindtap="createTask">
+    <image class="add-icon" src="https://img.icons8.com/material-outlined/96/ffffff/plus.png"/>
+  </view>
+
+
+</view> 

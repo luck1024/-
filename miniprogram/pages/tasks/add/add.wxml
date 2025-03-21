@@ -1,0 +1,65 @@
+<view class="container">
+  <view class="form">
+    <view class="form-item">
+      <view class="label">任务标题</view>
+      <input class="input" placeholder="请输入任务标题" value="{{title}}" bindinput="inputTitle" maxlength="50" />
+    </view>
+    
+    <view class="form-item">
+      <view class="label">任务描述 (选填)</view>
+      <textarea class="textarea" placeholder="请输入任务描述" value="{{description}}" bindinput="inputDescription" maxlength="200" auto-height></textarea>
+    </view>
+    
+    <view class="form-item">
+      <view class="label">截止日期 (选填)</view>
+      <picker mode="date" value="{{deadline}}" start="{{today}}" bindchange="selectDeadline">
+        <view class="picker {{deadline ? '' : 'placeholder'}}">
+          {{deadline || '请选择截止日期'}}
+        </view>
+      </picker>
+    </view>
+    
+    <view class="form-item">
+      <view class="label">提醒时间 (选填)</view>
+      <picker mode="time" value="{{reminderTime}}" bindchange="selectReminderTime">
+        <view class="picker {{reminderTime ? '' : 'placeholder'}}">
+          {{reminderTime || '请选择提醒时间'}}
+        </view>
+      </picker>
+    </view>
+    
+    <view class="form-item">
+      <view class="label">执行人</view>
+      <view class="option-group">
+        <view class="option {{assignee === 'self' ? 'active' : ''}}" bindtap="selectAssignee" data-value="self">
+          <view class="option-text">自己</view>
+        </view>
+        <view class="option {{assignee === 'partner' ? 'active' : ''}}" bindtap="selectAssignee" data-value="partner">
+          <view class="option-text">伴侣</view>
+        </view>
+        <view class="option {{assignee === 'both' ? 'active' : ''}}" bindtap="selectAssignee" data-value="both">
+          <view class="option-text">共同</view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="form-item">
+      <view class="label">优先级</view>
+      <view class="option-group">
+        <view class="option {{priority === 'low' ? 'active' : ''}}" bindtap="selectPriority" data-value="low">
+          <view class="option-text">低</view>
+        </view>
+        <view class="option {{priority === 'normal' ? 'active' : ''}}" bindtap="selectPriority" data-value="normal">
+          <view class="option-text">中</view>
+        </view>
+        <view class="option {{priority === 'high' ? 'active' : ''}}" bindtap="selectPriority" data-value="high">
+          <view class="option-text">高</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <button class="submit-btn" bindtap="addTask" loading="{{isLoading}}">添加任务</button>
+  </view>
+</view> 

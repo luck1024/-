@@ -1,0 +1,109 @@
+<view class="container">
+  <view class="loading" wx:if="{{isLoading}}">
+    <view class="loading-icon"></view>
+    <view class="loading-text">加载中...</view>
+  </view>
+  
+  <block wx:else>
+    <!-- 背景图片 -->
+    <!-- <view class="background" wx:if="{{backgroundImage}}">
+      <image class="bg-image" src="{{backgroundImage}}" mode="aspectFill"></image>
+      <view class="bg-mask"></view>
+    </view> -->
+    
+    <!-- 头部区域 -->
+    <view class="header">
+      <view class="couple-container">
+        <!-- 用户头像 -->
+        <view class="avatar-container">
+          <image 
+            class="avatar {{userInfo.gender === 1 ? 'boy-avatar' : 'girl-avatar'}}" 
+            src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" 
+            mode="aspectFill"
+          ></image>
+          <view class="avatar-name">{{userInfo.nickName || '未登录'}}</view>
+        </view>
+        
+        <!-- 中间的爱心 -->
+        <view class="heart-container">
+          <view class="heart"></view>
+          <view class="days-count" wx:if="{{hasPartner && daysCount > 0}}">{{daysCount}}</view>
+        </view>
+        
+        <!-- 情侣头像或加号 -->
+        <view class="avatar-container" bindtap="goToInvite">
+          <image 
+            wx:if="{{hasPartner}}"
+            class="avatar {{partnerInfo.gender === 1 ? 'boy-avatar' : 'girl-avatar'}}" 
+            src="{{partnerInfo.avatarUrl}}" 
+            mode="aspectFill"
+          ></image>
+          <view wx:else class="add-partner">
+            <view class="add-icon">+</view>
+          </view>
+          <view class="avatar-name" wx:if="{{hasPartner}}">{{partnerInfo.nickName}}</view>
+          <view class="avatar-name" wx:else>邀请</view>
+        </view>
+      </view>
+      
+      <!-- 恋爱纪念日 -->
+      <view class="anniversary" wx:if="{{hasPartner && anniversary}}">
+        <view class="anniversary-label">恋爱纪念日</view>
+        <view class="anniversary-date">{{anniversary}}</view>
+      </view>
+    </view>
+    
+    <!-- 美好瞬间 -->
+    <view class="moments-card">
+      <view class="card-title">
+        <text>美好瞬间</text>
+        <text class="view-more" bindtap="viewAlbum">查看更多</text>
+      </view>
+      <view class="moments-grid" wx:if="{{moments.length > 0}}">
+        <view 
+          class="moment-item" 
+          wx:for="{{moments}}" 
+          wx:key="_id"
+          bindtap="viewImage"
+          data-index="{{index}}"
+        >
+          <image class="moment-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+          <view class="moment-desc">{{item.description}}</view>
+        </view>
+      </view>
+      <view class="empty-list" wx:else>
+        <image class="empty-icon" src="{{app.globalData.images.emptyMoments}}" mode="aspectFit"></image>
+        <view class="empty-text">暂无照片</view>
+      </view>
+    </view>
+    
+    <!-- 今日心情 -->
+    <view class="mood-card">
+      <view class="card-title">今日心情</view>
+      <view class="mood-content" wx:if="{{todayMood}}" bindtap="goToMood">
+        <view class="mood-emoji">{{todayMood.emoji}}</view>
+        <view class="mood-text">{{todayMood.text}}</view>
+      </view>
+      <view class="mood-empty" wx:else>
+        <view class="empty-text">今天还没有记录心情~</view>
+        <view class="add-mood-btn" bindtap="recordMood">记录心情</view>
+      </view>
+    </view>
+    
+  
+  <!-- 功能区 -->
+  <view class="features">
+    <view class="feature-item" 
+          wx:for="{{features}}" 
+          wx:key="id"
+          bindtap="handleFeature"
+          data-type="{{item.type}}">
+      <image src="{{item.icon}}" mode="aspectFit"/>
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+  </block>
+    <view class="float-btn" bindtap="showLoveMessage">
+    <image src="{{heartIcon}}"/>
+  </view>
+</view>

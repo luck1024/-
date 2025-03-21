@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="form">
+    <view class="form-item avatar-item">
+      <view class="label">头像</view>
+      <view class="avatar-wrapper" bindtap="chooseAvatar">
+        <image class="avatar" src="{{avatarUrl || 'https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png'}}" mode="aspectFill"></image>
+        <view class="avatar-tip">点击更换</view>
+      </view>
+    </view>
+    
+    <view class="form-item">
+      <view class="label">昵称</view>
+      <input class="input" placeholder="请输入昵称" value="{{nickName}}" bindinput="inputNickName" maxlength="20" />
+    </view>
+    
+    <view class="form-item">
+      <view class="label">性别</view>
+      <view class="gender-group">
+        <view class="gender-option {{gender === 1 ? 'active' : ''}}" bindtap="selectGender" data-value="1">
+          <view class="gender-icon">👨</view>
+          <view class="gender-text">男生</view>
+        </view>
+        <view class="gender-option {{gender === 2 ? 'active' : ''}}" bindtap="selectGender" data-value="2">
+          <view class="gender-icon">👩</view>
+          <view class="gender-text">女生</view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="form-item">
+      <view class="label">生日</view>
+      <picker mode="date" value="{{birthday}}" bindchange="selectBirthday">
+        <view class="picker {{birthday ? '' : 'placeholder'}}">
+          {{birthday || '请选择生日'}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <button class="save-btn" bindtap="saveProfile" loading="{{isLoading}}">保存</button>
+  </view>
+</view> 

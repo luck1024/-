@@ -1,0 +1,116 @@
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+  background: #f8f8f8;
+}
+
+.album-header {
+  text-align: center;
+  padding: 40rpx 0;
+}
+
+.album-header .title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.album-header .subtitle {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+  display: block;
+}
+
+/* 分类选择器样式 */
+.category-scroll {
+  white-space: nowrap;
+  margin-bottom: 20rpx;
+  background: #fff;
+  padding: 20rpx;
+  border-radius: 12rpx;
+}
+
+.category-list {
+  display: flex;
+}
+
+.category-item {
+  padding: 10rpx 30rpx;
+  margin-right: 20rpx;
+  background: #f0f0f0;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.category-item.active {
+  background: #ff6b81;
+  color: #fff;
+}
+
+/* 照片墙样式 */
+.photo-wall {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+  padding-bottom: 120rpx;
+}
+
+.photo-item {
+  position: relative;
+  border-radius: 12rpx;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.photo-item image {
+  width: 100%;
+  height: 360rpx;
+  display: block;
+}
+
+.photo-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16rpx;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-date {
+  color: #fff;
+  font-size: 24rpx;
+  margin-bottom: 4rpx;
+}
+
+.photo-location {
+  color: rgba(255,255,255,0.9);
+  font-size: 22rpx;
+}
+
+/* 上传按钮样式 */
+.upload-btn {
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(45deg, #ff6b81, #ff4757);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 20rpx rgba(255,107,129,0.3);
+}
+
+.upload-btn .plus {
+  color: #fff;
+  font-size: 60rpx;
+  font-weight: 300;
+} 

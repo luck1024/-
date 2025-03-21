@@ -1,0 +1,7 @@
+<van-cell-group>
+  <van-field model:value="{{ username }}" required clearable label="昵称" placeholder="请输入昵称" />
+  <van-field model:value="{{ message }}" label="文案" required type="textarea" placeholder="请输入文案" autosize border="{{ false }}" />
+  <van-uploader class="upload" file-list="{{ fileList }}" bind:after-read="afterRead" max-count="1" deletable="{{ true }}" />
+</van-cell-group>
+
+<button class="but" bindtap="submit">提交</button>

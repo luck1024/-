@@ -1,0 +1,31 @@
+<view class="container">
+  <!-- 顶部图片 -->
+  <image class="top-image" src="{{app.globalData.images.shareInvite}}" mode="aspectFit"></image>
+  
+  <!-- 接受邀请说明 -->
+  <view class="invite-title">接受邀请</view>
+  <view class="invite-desc">输入邀请码，与你的另一半建立连接</view>
+  
+  <!-- 邀请码输入 -->
+  <view class="code-input-section">
+    <input 
+      class="code-input" 
+      placeholder="请输入邀请码" 
+      value="{{inviteCode}}"
+      bindinput="inputInviteCode"
+      maxlength="8"
+    />
+  </view>
+  
+  <!-- 接受邀请按钮 -->
+  <button 
+    class="accept-btn" 
+    bindtap="acceptInvite" 
+    loading="{{loading || !inviteCode}}"
+  >接受邀请</button>
+  
+  <!-- 返回按钮 -->
+  <view class="back-section">
+    <navigator open-type="navigateBack" class="back-btn">返回</navigator>
+  </view>
+</view> 

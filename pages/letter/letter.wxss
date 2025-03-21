@@ -1,0 +1,73 @@
+.container {
+  padding: 30rpx;
+  min-height: 100vh;
+  background: #f8f8f8;
+}
+
+.letter-list {
+  padding-bottom: 120rpx; width: 100%;
+}
+
+.letter-item {
+ 
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
+  transition: all 0.3s;
+}
+
+.letter-item:active {
+  transform: scale(0.98);
+}
+
+.letter-content {
+  position: relative;
+}
+
+.letter-text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+.letter-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.letter-date {
+  color: #666;
+}
+
+.letter-mood {
+  background: #fff5f5;
+  color: #ff6b81;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+}
+
+.write-btn {
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+  background: linear-gradient(45deg, #ff6b81, #ff4757);
+  color: #fff;
+  padding: 20rpx 40rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255,107,129,0.3);
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+
+.write-btn:active {
+  transform: scale(0.95);
+} 

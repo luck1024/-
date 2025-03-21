@@ -1,0 +1,82 @@
+.container {
+  min-height: 100vh;
+  background: #f7f7f7;
+  padding: 30rpx;
+}
+
+.edit-form {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  width: 140rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.avatar-item {
+  padding: 20rpx 30rpx;
+}
+
+.avatar-wrapper {
+  margin: 0;
+  padding: 0;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  overflow: hidden;
+  background: none;
+}
+
+.avatar-wrapper::after {
+  border: none;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.picker {
+  flex: 1;
+}
+
+.picker-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.save-btn {
+  width: 100% !important;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #07c160;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+}
+
+.save-btn[loading] {
+  opacity: 0.7;
+}

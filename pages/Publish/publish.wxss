@@ -1,0 +1,5 @@
+/* pages/Publish/publish.wxss */
+.but{
+  width: 80%;
+  margin: 25% auto;
+}

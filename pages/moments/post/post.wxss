@@ -1,0 +1,142 @@
+.container1 {
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-form {
+  flex: 1;
+  padding: 30rpx;
+}
+
+.content-input {
+  width: 100%;
+  min-height: 200rpx;
+  font-size: 30rpx;
+  line-height: 1.6;
+  color: #333;
+  padding: 20rpx 0;
+}
+
+/* 图片上传区域 */
+.image-uploader {
+  margin: 30rpx 0;
+}
+
+.image-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+}
+
+.image-item {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.image-item image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}
+
+.delete-btn {
+  position: absolute;
+  top: -20rpx;
+  right: -20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  z-index: 1;
+}
+
+.upload-btn {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-btn .plus {
+  font-size: 60rpx;
+  color: #999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+}
+
+.upload-btn .tip {
+  font-size: 24rpx;
+  color: #999;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 位置选择器 */
+.location-picker {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  color: #666;
+  font-size: 28rpx;
+}
+
+.location-picker .icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+/* 底部按钮组 */
+.btn-group {
+  padding: 30rpx;
+  display: flex;
+  gap: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.cancel-btn, .post-btn {
+  flex: 1;
+  height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-btn {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.post-btn {
+  background: linear-gradient(45deg, #ff6b81, #ff4757);
+  color: #fff;
+}
+
+.post-btn.disabled {
+  opacity: 0.5;
+  background: #ccc;
+}
+
+.post-btn:active {
+  transform: scale(0.98);
+} 

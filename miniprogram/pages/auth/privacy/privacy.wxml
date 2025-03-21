@@ -1,0 +1,31 @@
+<!-- pages/auth/privacy/privacy.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="title">隐私政策</view>
+    <view class="update-time">最后更新时间：{{lastUpdated}}</view>
+  </view>
+  
+  <view class="content">
+    <view class="intro">
+      我们非常重视您的隐私和个人信息保护。本隐私政策将帮助您了解我们如何收集、使用和保护您的个人信息。
+    </view>
+    
+    <view class="section" wx:for="{{content}}" wx:key="title">
+      <view class="section-title">{{item.title}}</view>
+      <view 
+        class="paragraph" 
+        wx:for="{{item.paragraphs}}" 
+        wx:for-item="paragraph" 
+        wx:key="*this"
+      >
+        {{paragraph}}
+      </view>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <view class="footer-text">
+      如您对本隐私政策有任何疑问，请联系我们的客服团队。
+    </view>
+  </view>
+</view>

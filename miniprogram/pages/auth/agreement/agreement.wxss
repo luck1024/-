@@ -1,0 +1,73 @@
+/* pages/auth/agreement/agreement.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #fff;
+  padding: 30rpx;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.update-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.content {
+  padding-bottom: 60rpx;
+}
+
+.intro {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 40rpx;
+  padding: 20rpx;
+  background-color: #f8f8f8;
+  border-radius: 8rpx;
+}
+
+.section {
+  margin-bottom: 40rpx;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.paragraph {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+  padding-left: 20rpx;
+}
+
+.footer {
+  text-align: center;
+  padding-top: 40rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.footer-text {
+  font-size: 26rpx;
+  color: #666;
+}

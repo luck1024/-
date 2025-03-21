@@ -1,0 +1,48 @@
+<view class="container">
+  <view class="form">
+    <view class="form-item">
+      <view class="label">收信人</view>
+      <view class="recipient">
+        <block wx:if="{{recipient}}">
+          <image class="recipient-avatar" src="{{recipient.avatarUrl || 'https://img.icons8.com/pastel-glyph/64/000000/person-male--v3.png'}}" mode="aspectFill"></image>
+          <text class="recipient-name">{{recipient.nickName}}</text>
+        </block>
+        <view class="no-partner" wx:else>
+          <text>您还没有绑定伴侣</text>
+          <navigator url="/pages/profile/invite/invite" class="invite-link">去邀请</navigator>
+        </view>
+      </view>
+    </view>
+    
+    <view class="form-item">
+      <view class="label">标题</view>
+      <input class="input" placeholder="请输入信件标题" value="{{title}}" bindinput="inputTitle" maxlength="50" />
+    </view>
+    
+    <view class="form-item">
+      <view class="label">内容</view>
+      <textarea class="textarea" placeholder="写下你想说的话..." value="{{content}}" bindinput="inputContent" maxlength="5000" auto-height></textarea>
+      <view class="word-count">{{content.length}}/5000</view>
+    </view>
+    
+    <view class="form-item">
+      <view class="label">图片 (选填，最多{{maxImageCount}}张)</view>
+      <view class="images-container">
+        <block wx:for="{{images}}" wx:key="index">
+          <view class="image-item">
+            <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-index="{{index}}"></image>
+            <view class="delete-btn" catchtap="deleteImage" data-index="{{index}}">×</view>
+          </view>
+        </block>
+        
+        <view class="add-image" bindtap="chooseImage" wx:if="{{images.length < maxImageCount}}">
+          <view class="add-icon">+</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <button class="send-btn" bindtap="sendLetter" loading="{{isLoading}}" disabled="{{!recipient}}">发送</button>
+  </view>
+</view> 

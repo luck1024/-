@@ -1,0 +1,48 @@
+<view class="container1">
+  <!-- 输入区域 -->
+  <view class="post-form">
+    <textarea class="content-input" 
+              placeholder="分享新的动态..." 
+              maxlength="500"
+              bindinput="onInput"
+              value="{{content}}"
+              auto-height/>
+    
+    <!-- 图片上传区域 -->
+    <view class="image-uploader">
+      <view class="image-list">
+        <view class="image-item" 
+              wx:for="{{images}}" 
+              wx:key="*this">
+          <image src="{{item}}" mode="aspectFill"/>
+          <view class="delete-btn" 
+                catchtap="deleteImage" 
+                data-index="{{index}}">×</view>
+        </view>
+        <view class="upload-btn" 
+              bindtap="chooseImage" 
+              wx:if="{{images.length < 9}}">
+          <text class="plus">+</text>
+          <text class="tip">添加图片</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 位置信息 -->
+    <view class="location-picker" bindtap="chooseLocation">
+      <image class="icon" src="/images/location.png" mode="aspectFit"/>
+      <text wx:if="{{!location}}">添加位置</text>
+      <text wx:else>{{location}}</text>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="btn-group">
+    <button class="cancel-btn" bindtap="cancelPost">取消</button>
+    <button class="post-btn" 
+            bindtap="publishMoment" 
+            >
+      发布
+    </button>
+  </view>
+</view> 

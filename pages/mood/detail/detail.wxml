@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="loading" wx:if="{{isLoading}}">
+    <view class="loading-icon"></view>
+    <view class="loading-text">加载中...</view>
+  </view>
+  
+  <block wx:elif="{{mood}}">
+    <!-- 心情详情 -->
+    <view class="mood-card">
+      <view class="mood-date">{{mood.date}}</view>
+      <view class="mood-emoji">{{mood.emoji}}</view>
+      <view class="mood-text">{{mood.text}}</view>
+    </view>
+    
+    <!-- 操作按钮 -->
+    <view class="action-btns">
+      <button 
+        class="action-btn edit-btn" 
+        bindtap="editMood"
+      >编辑</button>
+      <button 
+        class="action-btn delete-btn" 
+        bindtap="deleteMood"
+        loading="{{isDeleting}}"
+      >删除</button>
+    </view>
+  </block>
+  
+  <view class="not-found" wx:else>
+    <view class="not-found-text">心情记录不存在</view>
+    <navigator open-type="navigateBack" class="back-btn">返回</navigator>
+  </view>
+</view> 

@@ -1,0 +1,67 @@
+/* pages/Extra/xgtx/xgtx.wxss */
+page{
+  background-color: #fff;
+}
+.xgtx{
+  position: relative;
+}
+.navBar{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  /* background: linear-gradient(to left, rgb(219, 50, 7), rgb(182, 110, 95)); */
+  background: #f5f5f5;
+}
+.over{
+  border-bottom: 1px solid #f4f4f4;
+  height: 120rpx;
+  width: 100%;
+line-height: 120rpx;
+/* background-color: rgb(141, 217, 231); */
+}
+.over text{
+  width: 30%;
+  margin-left: 40rpx;
+}
+.over view{
+  width: 70%;
+}
+.over image{
+  float: right;
+  /* background-color: red; */
+  border-radius: 50%;
+  margin: 20rpx 40rpx;
+  height: 120rpx;
+  width: 120rpx;
+}
+.but{
+  margin: 10%;
+  width: 80%;
+  /* background-color: rgb(38, 214, 155); */
+  background-color: #06ba82;
+  color: #fff;
+}
+.but1{
+  color: rgb(202 204 203);
+  background-color: #f3f3f3;
+}
+.over input{
+  width: 50%;
+}
+input{
+  margin: 35rpx 40rpx;
+    display: block;
+    float: right;
+    text-align: right;
+}
+
+.placeholder-style {
+  /* color: green; */
+  text-align: right;
+}
+/* button的外边线 */
+button::after{
+  border: 0;
+}

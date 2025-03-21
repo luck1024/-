@@ -1,0 +1,61 @@
+<view class="container">
+  <view class="header">
+    <view class="title">接受邀请</view>
+    <view class="subtitle">输入邀请码，与你的另一半建立连接</view>
+  </view>
+  
+  <view class="input-section">
+    <input 
+      class="code-input" 
+      type="text" 
+      placeholder="请输入邀请码" 
+      value="{{inviteCode}}" 
+      bindinput="inputInviteCode"
+      maxlength="8"
+    />
+    <button 
+      class="verify-btn" 
+      bindtap="verifyInviteCode" 
+      loading="{{isVerifying}}"
+    >验证</button>
+  </view>
+  
+  <block wx:if="{{inviterInfo}}">
+    <view class="inviter-info">
+      <view class="info-title">邀请人信息</view>
+      <view class="info-card">
+        <image class="avatar" src="{{inviterInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+        <view class="info-content">
+          <view class="nickname">{{inviterInfo.nickName || '未知用户'}}</view>
+          <view class="gender">
+            {{inviterInfo.gender === 1 ? '男生' : inviterInfo.gender === 2 ? '女生' : '未知'}}
+          </view>
+        </view>
+      </view>
+      
+      <view class="confirm-section">
+        <view class="confirm-tip">确认要与Ta建立伴侣关系吗？</view>
+        <button 
+          class="confirm-btn" 
+          bindtap="acceptInvitation" 
+          loading="{{isLoading}}"
+        >确认绑定</button>
+      </view>
+    </view>
+  </block>
+  
+  <view class="tips">
+    <view class="tip-item">
+      <view class="tip-icon">💝</view>
+      <view class="tip-text">每个用户只能绑定一位伴侣</view>
+    </view>
+    <view class="tip-item">
+      <view class="tip-icon">🔒</view>
+      <view class="tip-text">绑定后需双方确认才能解除</view>
+    </view>
+    <view class="tip-item">
+      <view class="tip-icon">💌</view>
+      <view class="tip-text">绑定后可以一起记录美好时光</view>
+    </view>
+  </view>
+</view> 

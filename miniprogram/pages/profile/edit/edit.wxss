@@ -1,0 +1,143 @@
+/* pages/profile/edit/edit.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  padding-bottom: 120rpx;
+}
+
+.form {
+  background-color: #fff;
+  padding: 30rpx;
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.avatar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 20rpx 0;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-tip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.input {
+  width: 100%;
+  height: 80rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.gender-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.gender-option {
+  flex: 1;
+  height: 120rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20rpx;
+}
+
+.gender-option:first-child {
+  margin-left: 0;
+}
+
+.gender-option:last-child {
+  margin-right: 0;
+}
+
+.gender-option.active {
+  background-color: #ff6b81;
+}
+
+.gender-icon {
+  font-size: 40rpx;
+  margin-bottom: 10rpx;
+}
+
+.gender-text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.gender-option.active .gender-text {
+  color: #fff;
+}
+
+.picker {
+  width: 100%;
+  height: 80rpx;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 80rpx;
+}
+
+.placeholder {
+  color: #999;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.save-btn {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #ff6b81;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+} 

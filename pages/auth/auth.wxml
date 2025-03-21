@@ -1,0 +1,25 @@
+<!--pages/auth/auth.wxml-->
+<!--pages/auth/auth.wxml-->
+<view class="logo">
+  <image src='https://img2.baidu.com/it/u=3991721782,727212756&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1666198800&t=1f151a070d9c0904ffd83c7dc63e3831'></image>
+  <text></text>
+</view>
+
+<view class="form">
+  <view class="row-group">
+    <text>昵称</text>
+    <input placeholder="请填写昵称" placeholder-class='txt' maxlength='11' value="{{phone}}" bindinput="bindPhoneInput" />
+  </view>
+
+   <view class="row-group">
+    <text>验证码</text>
+    <input placeholder="请填写验证码" placeholder-class='txt' maxlength='4' value="{{code1}}" bindinput="bindCodeInput" />
+    <text class="code" bindtap="onClickCheckCode">{{code}}</text>
+    <!-- <view class="code" bindtap="onClickCheckCode">{{contantTxt}}</view> -->
+  </view>
+
+  <view>
+    <button class="submit"  open-type="getUserInfo" bindtap="onClickSubmit">登录 | 注册</button>
+  </view>
+</view>
+

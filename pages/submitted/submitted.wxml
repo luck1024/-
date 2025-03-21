@@ -1,0 +1,42 @@
+<!--pages/submitted/submitted.wxml-->
+<van-skeleton title avatar row="3" wx:if="{{!listshow}}"  loading="{{ loading }}">
+<view class="content">
+    <view class="left">
+      <block wx:for="{{list}}" wx:key="index">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+      </block>
+    </view>
+    <view class="right">
+      <block wx:for="{{list}}" wx:key="index">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+      </block>
+    </view>
+  </view>
+  <template name="item">
+    <view class="item">
+      <!-- 预览图片 -->
+      <image class="item-img" bindtap="demand" data-add="{{url}}" show-menu-by-longpress src="{{url}}" mode="widthFix"></image>
+      <view class="item-title-box">
+        <navigator url="url" class="item-title">{{title}}</navigator>
+      </view>
+      <view class="name">
+        <image class="item-ava" src="{{avatar}}"></image>
+        <text class="name-title">{{name}}</text>
+
+        <view bindtap='update' data-love='{{name}}'>
+          <!--爱心点赞-->
+          <image wx:if="{{isLove}}" class='imgList' src='../../image/ai.png' />
+          <image wx:if="{{!isLove}}"  class='imgList like' src='../../image/love.png' />
+        </view>
+        <view class="heart">
+
+          <text>{{num}}</text>
+        </view>
+      </view>
+    </view>
+  </template>
+</van-skeleton>
+<!-- 无内容时 -->
+<view  wx:if="{{listshow}}">
+  <van-empty description="暂无投稿内容" />
+</view>

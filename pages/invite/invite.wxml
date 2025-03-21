@@ -1,0 +1,42 @@
+<view class="container">
+  <view class="loading" wx:if="{{isLoading}}">
+    <view class="loading-icon"></view>
+    <view class="loading-text">加载中...</view>
+  </view>
+  
+  <block wx:else>
+    <!-- 顶部图片 -->
+    <image class="top-image" src="{{app.globalData.images.shareInvite}}" mode="aspectFit"></image>
+    
+    <!-- 邀请说明 -->
+    <view class="invite-title">邀请另一半</view>
+    <view class="invite-desc">生成邀请码，邀请你的另一半加入</view>
+    
+    <!-- 邀请码区域 -->
+    <view class="code-section" wx:if="{{hasInviteCode}}">
+      <view class="code-label">你的邀请码</view>
+      <view class="code-value">{{inviteCode}}</view>
+      <view class="code-tips">邀请码有效期为24小时</view>
+      
+      <!-- 操作按钮 -->
+      <view class="action-btns">
+        <button class="action-btn copy-btn" bindtap="copyInviteCode">复制邀请码</button>
+        <button class="action-btn share-btn" open-type="share">分享给好友</button>
+      </view>
+    </view>
+    
+    <!-- 生成邀请码按钮 -->
+    <button 
+      class="generate-btn" 
+      bindtap="generateInviteCode" 
+      wx:if="{{!hasGenerated}}"
+      loading="{{isGenerating}}"
+    >生成邀请码</button>
+    
+    <!-- 接受邀请入口 -->
+    <view class="accept-section">
+      <view class="accept-title">收到邀请码？</view>
+      <view class="accept-btn" bindtap="goToAcceptInvite">接受邀请</view>
+    </view>
+  </block>
+</view> 

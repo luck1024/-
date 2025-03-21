@@ -1,0 +1,55 @@
+<view class="container">
+  <block wx:if="{{notifications.length > 0}}">
+    <view class="notification-list">
+      <view 
+        class="notification-item {{!item.isRead ? 'unread' : ''}}" 
+        wx:for="{{notifications}}" 
+        wx:key="_id"
+        bindtap="handleNotificationTap"
+        data-notification="{{item}}"
+      >
+        <view class="notification-icon">
+          <block wx:if="{{item.type === 'moment'}}">
+            <view class="icon moment">💭</view>
+          </block>
+          <block wx:elif="{{item.type === 'letter'}}">
+            <view class="icon letter">💌</view>
+          </block>
+          <block wx:elif="{{item.type === 'task'}}">
+            <view class="icon task">📝</view>
+          </block>
+          <block wx:else>
+            <view class="icon system">🔔</view>
+          </block>
+        </view>
+        
+        <view class="notification-content">
+          <view class="title">{{item.title}}</view>
+          <view class="message">{{item.message}}</view>
+          <view class="time">{{item.createTime}}</view>
+        </view>
+        
+        <view class="unread-dot" wx:if="{{!item.isRead}}"></view>
+      </view>
+    </view>
+    
+    <view class="loading" wx:if="{{isLoading}}">
+      <view class="loading-icon"></view>
+      <text>加载中...</text>
+    </view>
+    
+    <view class="no-more" wx:if="{{!hasMore && !isLoading}}">
+      没有更多通知了
+    </view>
+  </block>
+  
+  <view class="empty" wx:elif="{{!isLoading}}">
+    <view class="empty-icon">🔔</view>
+    <view class="empty-text">暂无通知</view>
+  </view>
+  
+  <view class="loading-full" wx:else>
+    <view class="loading-icon"></view>
+    <text>加载中...</text>
+  </view>
+</view> 

@@ -15,11 +15,10 @@ exports.main = async (event, context) => {
   
   try {
     // 再次验证邀请码
-    const codeResult = await transaction.collection('inviteCodes')
+    const codeResult = await transaction.collection('invites')
       .where({
         code: inviteCode,
-        used: false,
-        expired: false,
+        status: 'active',
         expireTime: db.command.gt(new Date())
       })
       .orderBy('createTime', 'desc')
@@ -37,7 +36,7 @@ exports.main = async (event, context) => {
     const inviteInfo = codeResult.data[0]
     
     // 确认邀请码创建者是传入的邀请者
-    if (inviteInfo.creatorId !== inviterOpenid) {
+    if (inviteInfo._openid !== inviterOpenid) {
       await transaction.rollback()
       return {
         success: false,
@@ -46,7 +45,7 @@ exports.main = async (event, context) => {
     }
     
     // 检查是否是自己的邀请码
-    if (inviteInfo.creatorId === OPENID) {
+    if (inviteInfo._openid === OPENID) {
       await transaction.rollback()
       return {
         success: false,
@@ -127,11 +126,12 @@ exports.main = async (event, context) => {
     })
     
     // 3. 更新邀请码状态
-    await transaction.collection('inviteCodes').doc(inviteInfo._id).update({
+    await transaction.collection('invites').doc(inviteInfo._id).update({
       data: {
-        used: true,
-        usedBy: OPENID,
-        usedTime: db.serverDate()
+        status: 'used',
+        acceptUserId: OPENID,
+        acceptTime: db.serverDate(),
+        _updateTime: db.serverDate()
       }
     })
     

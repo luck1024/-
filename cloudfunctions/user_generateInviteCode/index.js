@@ -14,7 +14,8 @@ exports.main = async (event, context) => {
       .where({
         creatorId: OPENID,
         used: false,
-        expireTime: db.command.gt(new Date()) // 未过期
+        expired: false,
+        expireTime: db.command.gt(new Date())
       })
       .get()
     
@@ -37,7 +38,7 @@ exports.main = async (event, context) => {
     // 生成6位随机邀请码
     const inviteCode = Math.random().toString(36).substr(2, 6).toUpperCase()
     
-    // 将新邀请码存入数据库
+    // 将新邀请码存入数据库，确保包含expired字段
     const result = await db.collection('inviteCodes').add({
       data: {
         code: inviteCode,
@@ -45,14 +46,18 @@ exports.main = async (event, context) => {
         used: false,
         expired: false,
         createTime: db.serverDate(),
-        expireTime: new Date(Date.now() + 24 * 60 * 60 * 1000) // 24小时后过期
+        expireTime: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24小时后过期
+        _createTime: db.serverDate(),
+        _updateTime: db.serverDate()
       }
     })
     
+    // 返回结果
     return {
       success: true,
       inviteCode,
-      codeId: result._id
+      codeId: result._id,
+      expireTime: new Date(Date.now() + 24 * 60 * 60 * 1000)
     }
   } catch (err) {
     console.error('[生成邀请码]', err)

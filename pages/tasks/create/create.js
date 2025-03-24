@@ -54,6 +54,22 @@ Page({
       const task = taskResult.data;
       
       if (task) {
+        // 获取用户信息
+        const openid = app.globalData.openid;
+        const userInfo = wx.getStorageSync('userData');
+        
+        // 检查是否为任务创建者或其伴侣
+        if (task._openid !== openid && task.partnerId !== openid) {
+          wx.showToast({
+            title: '无权编辑此任务',
+            icon: 'none'
+          });
+          setTimeout(() => {
+            wx.navigateBack();
+          }, 1500);
+          return;
+        }
+        
         this.setData({
           taskType: task.type,
           title: task.title,
@@ -183,13 +199,28 @@ Page({
 
       // 保存任务
       if (this.data.isEdit) {
-        // 编辑模式：更新现有任务
-        await db.collection('tasks').doc(this.data.taskId).update({
-          data: {
-            ...taskData,
-            updateTime: db.serverDate()
+        // 编辑模式：先检查权限
+        if (this.data.taskId) {
+          const taskDoc = await db.collection('tasks').doc(this.data.taskId).get();
+          const task = taskDoc.data;
+          
+          // 检查是否为任务创建者或其伴侣
+          if (task._openid !== openid && task.partnerId !== openid) {
+            wx.showToast({
+              title: '无权修改此任务',
+              icon: 'none'
+            });
+            return;
           }
-        });
+          
+          // 有权限，更新任务
+          await db.collection('tasks').doc(this.data.taskId).update({
+            data: {
+              ...taskData,
+              updateTime: db.serverDate()
+            }
+          });
+        }
       } else {
         // 创建模式：添加新任务
         await db.collection('tasks').add({

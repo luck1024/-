@@ -62,7 +62,7 @@
           wx:for="{{filteredWishes}}" 
           wx:key="id">
       <view class="wish-header">
-        <view class="checkbox" bindtap="toggleWish" data-id="{{item.id}}">
+        <view class="checkbox" bindtap="toggleWish" data-id="{{item._id}}">
           <view class="check-inner {{item.completed ? 'checked' : ''}}"></view>
         </view>
         <view class="wish-content">

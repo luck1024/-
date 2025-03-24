@@ -18,16 +18,16 @@ Page({
   },
 
   async onShow() {
-    const isLoggedIn = await app.checkSession();
-    console.log('Login page onShow');
-    if (isLoggedIn) {
-      wx.redirectTo({
-        url: '/pages/index/index',
-        success: () => {
-          console.log('跳转成功');
-        }
-      });
-    }
+    // const isLoggedIn = await app.checkSession();
+    // console.log('Login page onShow');
+    // if (isLoggedIn) {
+    //   wx.redirectTo({
+    //     url: '/pages/index/index',
+    //     success: () => {
+    //       console.log('跳转成功');
+    //     }
+    //   });
+    // }
   },
 
   // 获取用户信息
@@ -53,7 +53,8 @@ Page({
       const { result } = await wx.cloud.callFunction({
         name: 'login'
       });
-      
+      console.log('获取 openid 结果:', result);
+      // return
       if (!result.openid) {
         throw new Error('获取 openid 失败');
       }
@@ -64,13 +65,13 @@ Page({
       const userResult = await db.collection('users').where({
         _openid: result.openid
       }).get();
-      
+      console.log(userResult);
       let userData = null;
       
       if (userResult.data.length === 0) {
         // 4. 用户不存在，创建新用户
         const userDoc = {
-          _openid: result.openid, // 显式设置 openid
+          // _openid: result.openid, // 显式设置 openid
           nickName: userInfo.nickName,
           avatarUrl: userInfo.avatarUrl,
           gender: userInfo.gender === 1 ? '男' : userInfo.gender === 2 ? '女' : '未知',
@@ -87,7 +88,8 @@ Page({
           const addResult = await db.collection('users').add({
             data: userDoc
           });
-          
+          console.log('添加用户结果:', addResult);
+
           userData = {
             ...userDoc,
             _id: addResult._id

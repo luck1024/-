@@ -1,6 +1,6 @@
 const db = wx.cloud.database();
 const _ = db.command;
-
+const app = getApp();
 Page({
   data: {
     albums: [],
@@ -378,10 +378,41 @@ Page({
     try {
       this.setData({ loading: true });
       
+      // 从全局获取用户OpenID
+      const openid = app.globalData.openid;
+      if (!openid) {
+        console.error('未获取到 openid');
+        return;
+      }
+
+      // 获取用户信息
+      const userInfo = wx.getStorageSync('userData');
+      if (!userInfo) {
+        console.error('未找到用户信息');
+        return;
+      }
+
+      // 构建查询条件
+      let query = {};
+      
+      if (userInfo.partnerId) {
+        // 如果有伴侣，获取两个人的照片
+        query = {
+          _openid: _.in([openid, userInfo.partnerId])
+        };
+      } else {
+        // 没有伴侣，只获取自己的照片
+        query = {
+          _openid: openid
+        };
+      }
+      
       const result = await db.collection('albums')
+        .where(query)
         .orderBy('createTime', 'desc')
         .limit(this.data.pageSize)
         .get();
+      
       console.log(result.data);
       // 处理时间格式
       const processedAlbums = this.processAlbumData(result.data);
@@ -415,7 +446,37 @@ Page({
       const nextPage = this.data.page + 1;
       const skip = (nextPage - 1) * this.data.pageSize;
       
+      // 从全局获取用户OpenID
+      const openid = app.globalData.openid;
+      if (!openid) {
+        console.error('未获取到 openid');
+        return;
+      }
+      
+      // 获取用户信息
+      const userInfo = wx.getStorageSync('userData');
+      if (!userInfo) {
+        console.error('未找到用户信息');
+        return;
+      }
+
+      // 构建查询条件
+      let query = {};
+      
+      if (userInfo.partnerId) {
+        // 如果有伴侣，获取两个人的照片
+        query = {
+          _openid: _.in([openid, userInfo.partnerId])
+        };
+      } else {
+        // 没有伴侣，只获取自己的照片
+        query = {
+          _openid: openid
+        };
+      }
+      
       const result = await db.collection('albums')
+        .where(query)
         .orderBy('createTime', 'desc')
         .skip(skip)
         .limit(this.data.pageSize)

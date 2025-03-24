@@ -1,3 +1,6 @@
+const app = getApp();
+const db = wx.cloud.database();
+
 Page({
   data: {
     inviteCode: '',
@@ -39,12 +42,55 @@ Page({
     try {
       this.setData({ isVerifying: true });
       
+      // 调用云函数验证邀请码
       const result = await wx.cloud.callFunction({
         name: 'user_verifyInviteCode',
         data: { inviteCode }
       });
       
+      // 验证成功后，检查邀请者是否已有伴侣
       if (result.result.success) {
+        const inviterOpenid = result.result.inviter._openid;
+        
+        // 查询邀请者的用户信息
+        const userResult = await db.collection('users').where({
+          _openid: inviterOpenid
+        }).get();
+        
+        if (userResult.data.length === 0) {
+          wx.showToast({
+            title: '邀请者信息不存在',
+            icon: 'none'
+          });
+          return;
+        }
+        
+        const inviter = userResult.data[0];
+        
+        // 检查邀请者是否已有伴侣
+        if (inviter.partnerId) {
+          wx.showToast({
+            title: '邀请者已绑定其他伴侣',
+            icon: 'none'
+          });
+          return;
+        }
+        
+        // 检查当前用户是否已有伴侣
+        const currentOpenid = app.globalData.openid;
+        const currentUserResult = await db.collection('users').where({
+          _openid: currentOpenid
+        }).get();
+        
+        if (currentUserResult.data.length > 0 && currentUserResult.data[0].partnerId) {
+          wx.showToast({
+            title: '您已绑定其他伴侣',
+            icon: 'none'
+          });
+          return;
+        }
+        
+        // 一切验证通过，显示邀请者信息
         this.setData({
           inviterInfo: result.result.inviter
         });
@@ -70,16 +116,52 @@ Page({
     try {
       this.setData({ isLoading: true });
       
+      const inviteCode = this.data.inviteCode;
+      
+      // 确保有邀请者信息
+      if (!this.data.inviterInfo || !this.data.inviterInfo._openid) {
+        wx.showToast({
+          title: '邀请者信息无效，请重新验证',
+          icon: 'none'
+        });
+        return;
+      }
+      
+      const inviterOpenid = this.data.inviterInfo._openid;
+      
+      // 调用云函数接受邀请
       const result = await wx.cloud.callFunction({
         name: 'user_acceptInvitation',
         data: {
-          inviteCode: this.data.inviteCode
+          inviteCode: inviteCode,
+          inviterOpenid: inviterOpenid
         }
       });
       
       if (result.result.success) {
+        // 获取当前用户信息
+        const currentOpenid = app.globalData.openid;
+        const currentUserResult = await db.collection('users').where({
+          _openid: currentOpenid
+        }).get();
+        
+        if (currentUserResult.data.length > 0) {
+          const currentUser = currentUserResult.data[0];
+          
+          // 更新本地存储的用户信息
+          const updatedUserInfo = {
+            ...currentUser,
+            partnerId: inviterOpenid,
+            partnerNickName: this.data.inviterInfo.nickName,
+            partnerAvatarUrl: this.data.inviterInfo.avatarUrl
+          };
+          
+          wx.setStorageSync('userData', updatedUserInfo);
+        }
+        
         wx.showToast({
-          title: '绑定成功'
+          title: '绑定成功',
+          icon: 'success'
         });
         
         // 返回首页

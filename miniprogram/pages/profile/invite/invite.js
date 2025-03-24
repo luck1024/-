@@ -1,3 +1,6 @@
+const app = getApp();
+const db = wx.cloud.database();
+
 Page({
   data: {
     inviteCode: '',
@@ -11,6 +14,26 @@ Page({
   // 生成邀请码
   async generateInviteCode() {
     try {
+      this.setData({ isLoading: true });
+      
+      // 先检查用户是否已经有邀请码
+      const openid = app.globalData.openid;
+      
+      // 检查用户是否已有伴侣
+      const userResult = await db.collection('users').where({
+        _openid: openid
+      }).get();
+      
+      if (userResult.data.length > 0 && userResult.data[0].partnerId) {
+        wx.showToast({
+          title: '您已有伴侣，无需生成邀请码',
+          icon: 'none'
+        });
+        this.setData({ isLoading: false });
+        return;
+      }
+      
+      // 调用云函数生成新邀请码（会覆盖旧邀请码）
       const result = await wx.cloud.callFunction({
         name: 'user_generateInviteCode'
       });
@@ -31,6 +54,8 @@ Page({
         title: '生成邀请码失败',
         icon: 'none'
       });
+    } finally {
+      this.setData({ isLoading: false });
     }
   },
 

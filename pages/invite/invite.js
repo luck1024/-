@@ -1,6 +1,6 @@
 const db = wx.cloud.database();
 const _ = db.command;
-
+const app = getApp();
 Page({
   data: {
     inviteCode: '',
@@ -20,9 +20,17 @@ Page({
       // 检查用户是否已经绑定伴侣
       const userResult = await db.collection('users').where({
         _openid: this.data.openid
-      }).get();
-      
-      if (userResult.data.length > 0 && userResult.data[0].partnerId) {
+      }).get(userResult);
+      console.log(userResult);
+      if (userResult.data.length === 0) {
+        wx.showToast({
+          title: '您还没有绑定伴侣',
+          icon: 'none'
+        });
+        return;
+      }
+    let arr=  userResult.data.map(item=>item._openid==app.globalData.openid)
+      if (arr.length > 0 && arr[0].partnerId) {
         wx.showToast({
           title: '您已经绑定了伴侣',
           icon: 'none'

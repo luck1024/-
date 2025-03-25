@@ -1,7 +1,8 @@
 恋爱日记适合情侣使用
 包括登录
 （未作手机号登录），选择伴侣只能绑定一位伴侣，选择后可以使用上传照片到相册，只有互相绑定的才能查看，也有任务，日记，我的，绑定伴侣是生成邀请码绑定，
-使用云开发，clone下去换成自己的测试号，然后开启云开发（有一个人=月免费额度），可以查看
+使用云开发，clone下去换成自己的测试号，然后开启云开发（有一个月免费额度），可以查看
+
 ![Image](https://github.com/user-attachments/assets/906bf65a-30f5-47bc-83ea-f223ea03413a)
 
 ![Image](https://github.com/user-attachments/assets/f583fed6-75ed-4a83-bf13-f93685515305)

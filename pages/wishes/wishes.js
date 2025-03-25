@@ -207,7 +207,7 @@ Page({
       
       wx.showToast({
         title: completed ? '已完成' : '已取消完成',
-        icon: 'success'
+        icon: 'success' 
       });
       
     } catch (err) {

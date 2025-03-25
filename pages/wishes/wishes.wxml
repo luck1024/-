@@ -73,7 +73,7 @@
             <view class="priority-dot {{priorities[item.priority].class}}"></view>
           </view>
         </view>
-        <view class="delete-btn" catchtap="deleteWish" data-id="{{item.id}}">
+        <view class="delete-btn" catchtap="deleteWish" data-id="{{item._id}}">
           <text>×</text>
         </view>
       </view>
